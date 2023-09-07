@@ -1,0 +1,73 @@
+---
+- name: "@nohehf config playbook"
+  hosts: all
+  become: true # run as root
+
+  tasks:
+    - name: "Install git & zsh"
+      ansible.builtin.apt:
+        name:
+          - git
+          - zsh
+          - nodejs
+          - curl
+          - bat # @todo symlink batcat to bat
+        state: present
+
+    - name: "Install go"
+      ansible.builtin.include_role:
+        name: gantsign.golang
+
+    # @todo propper user creation
+
+    # - name: "Create nohehf user"
+    #   ansible.builtin.user:
+    #     name: nohehf
+    #     shell: /bin/zsh
+    #     createhome: true
+    #     home: /home/nohehf
+    #     password: nohehf
+    #     state: present
+
+    # - name: "Ensure /home/nohehf/.ssh directory exists"
+    #   ansible.builtin.file:
+    #     path: /home/nohehf/.ssh
+    #     state: directory
+    #     owner: nohehf
+    #     group: nohehf
+    #     mode: u+rwx,g-rwx,o-rwx
+
+    # - name: "Add public key to nohehf user"
+    #   ansible.builtin.copy:
+    #     src: /root/.ssh/authorized_keys
+    #     remote_src: true
+    #     dest: /home/nohehf/.ssh/authorized_keys
+    #     owner: nohehf
+    #     group: nohehf
+    #     mode: u+rw
+
+    - name: "Install oh-my-zsh"
+      vars:
+        zsh_user: nohehf
+      ansible.builtin.include_role:
+        name: viasite-ansible.zsh
+
+    - name: "Check if deno is installed"
+      ansible.builtin.stat:
+        path: /root/.deno/bin/deno
+      register: deno
+
+    - name: "Get deno install file"
+      ansible.builtin.get_url:
+        url: https://deno.land/x/install/install.sh
+        dest: /tmp/install.sh
+        mode: "u+x"
+      when: not deno.stat.exists
+      changed_when: not deno.stat.exists
+
+    - name: "Install deno"
+      ansible.builtin.command: /tmp/install.sh
+      when: not deno.stat.exists
+      changed_when: not deno.stat.exists
+
+    # - name: "Install dotfiles" @todo
