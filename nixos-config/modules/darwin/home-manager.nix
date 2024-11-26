@@ -67,7 +67,7 @@ in
     { path = "/System/Applications/Messages.app/"; }
     # { path = "/System/Applications/Facetime.app/"; }
     { path = "${pkgs.alacritty}/Applications/Alacritty.app/"; }
-    { path = "${homebrew.visual-studio-code}"; }
+    # { path = "${pkgs.visual-studio-code}"; } // todo find vscode path
     # { path = "/System/Applications/Music.app/"; }
     # { path = "/System/Applications/News.app/"; }
     # { path = "/System/Applications/Photos.app/"; }
