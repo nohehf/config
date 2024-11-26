@@ -2,7 +2,7 @@
 
 let
   user = "next";
-  sharedFiles = import ../shared/files.nix { inherit config pkgs; };
+  sharedFiles = import ../../files.nix { inherit config pkgs; };
   additionalFiles = import ./files.nix { inherit user config pkgs; };
 in
 {
@@ -52,7 +52,7 @@ in
         ];
         stateVersion = "23.11";
       };
-      programs = { } // import ../shared/home-manager.nix { inherit config pkgs lib; };
+      programs = { } // import ../../home-manager.nix { inherit config pkgs lib; };
 
       # Marked broken Oct 20, 2022 check later to remove this
       # https://github.com/nix-community/home-manager/issues/3344

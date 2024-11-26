@@ -7,7 +7,10 @@ in
 {
   imports = [
     ../../modules/nixos/disk-config.nix
-    ../../modules/shared
+    ../../home-manager.nix
+    ../../packages.nix
+    ../../default.nix
+    ../../files.nix
   ];
 
   # Use the systemd-boot EFI boot loader.

@@ -5,7 +5,11 @@ let user = "next"; in
 {
   imports = [
     ../../modules/darwin/home-manager.nix
-    ../../modules/shared
+    # Shared configuration
+    ../../home-manager.nix
+    # ../../packages.nix
+    # ../../default.nix
+    # ../../files.nix
   ];
 
   services.nix-daemon.enable = true;
@@ -33,7 +37,7 @@ let user = "next"; in
   system.checks.verifyNixPath = false;
 
   environment.systemPackages = with pkgs; [
-  ] ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
+  ] ++ (import ../../packages.nix { inherit pkgs; });
 
   system = {
     stateVersion = 4;
