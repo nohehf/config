@@ -1,7 +1,9 @@
 { config, inputs, pkgs, ... }:
 
-let user = "next";
-    keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOk8iAnIaa1deoc7jw8YACPNVka1ZFJxhnU4G74TmS+p" ]; in
+let
+  user = "next";
+  keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOk8iAnIaa1deoc7jw8YACPNVka1ZFJxhnU4G74TmS+p" ];
+in
 {
   imports = [
     ../../modules/nixos/disk-config.nix
@@ -50,7 +52,7 @@ let user = "next";
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-   };
+  };
 
   # Manages keys and such
   programs = {
@@ -63,7 +65,7 @@ let user = "next";
     zsh.enable = true;
   };
 
-  services = { 
+  services = {
     xserver = {
       enable = true;
 
@@ -119,7 +121,7 @@ let user = "next";
       overrideDevices = true;
 
       settings = {
-        devices = {};
+        devices = { };
         options.globalAnnounceEnabled = false; # Only sync on LAN
       };
     };
@@ -157,8 +159,8 @@ let user = "next";
           "class_g = 'i3lock'"
         ];
         round-borders = 3;
-        round-borders-exclude = [];
-        round-borders-rule = [];
+        round-borders-exclude = [ ];
+        round-borders-rule = [ ];
         shadow = true;
         shadow-radius = 8;
         shadow-opacity = 0.4;
@@ -281,9 +283,9 @@ let user = "next";
     enable = true;
     extraRules = [{
       commands = [
-       {
-         command = "${pkgs.systemd}/bin/reboot";
-         options = [ "NOPASSWD" ];
+        {
+          command = "${pkgs.systemd}/bin/reboot";
+          options = [ "NOPASSWD" ];
         }
       ];
       groups = [ "wheel" ];

@@ -59,6 +59,7 @@ with pkgs; [
   # python3
   # virtualenv
 
-  # Nix
+  # Nix related
   nixpkgs-fmt
+  nil
 ]

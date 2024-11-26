@@ -1,9 +1,9 @@
 { config, pkgs, lib, ... }:
 
-let 
-    name = "next";
-    user = "next";
-    email = "next@example.com";
+let
+  name = "next";
+  user = "next";
+  email = "next@example.com";
 in
 {
   zsh = import ./config/zsh.nix { inherit config pkgs lib name email; };
