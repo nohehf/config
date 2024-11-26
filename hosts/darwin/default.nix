@@ -6,9 +6,8 @@ let user = "next"; in
   imports = [
     ../../modules/darwin/home-manager.nix
     # Shared configuration
-    ../../home-manager.nix
+    # ../../home-manager.nix
     # ../../packages.nix
-    # ../../default.nix
     # ../../files.nix
   ];
 

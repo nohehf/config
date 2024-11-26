@@ -72,6 +72,15 @@
       };
     in
     {
+      nixpkgs = {
+        config = {
+          allowUnfree = true;
+          allowBroken = true;
+          allowInsecure = false;
+          allowUnsupportedSystem = true;
+        };
+      };
+
       devShells = forAllSystems devShell;
       apps = nixpkgs.lib.genAttrs linuxSystems mkLinuxApps // nixpkgs.lib.genAttrs darwinSystems mkDarwinApps;
 
