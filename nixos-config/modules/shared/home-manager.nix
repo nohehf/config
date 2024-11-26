@@ -7,7 +7,7 @@ let
 in
 {
   zsh = import ./config/zsh.nix { inherit config pkgs lib name email; };
-  vim = import ./config/zsh.nix { inherit config pkgs lib name email; };
+  vim = import ./config/vim.nix { inherit config pkgs lib name email; };
 
   alacritty = {
     enable = true;
