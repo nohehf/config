@@ -46,16 +46,19 @@ with pkgs; [
   # htop
   # hunspell
   # iftop
-  # jetbrains-mono
+  jetbrains-mono
   # jq
   # ripgrep
   # tree
   # tmux
   # unrar
   # unzip
-  # zsh-powerlevel10k
+  zsh-powerlevel10k
 
   # Python packages
   # python3
   # virtualenv
+
+  # Nix
+  nixpkgs-fmt
 ]

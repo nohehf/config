@@ -53,10 +53,12 @@ let user = "next"; in
 
       dock = {
         autohide = true;
+        autohide-time-modifier = 0.5;
+        autohide-delay = 0.1;
         show-recents = false;
         launchanim = true;
         orientation = "bottom";
-        tilesize = 48;
+        tilesize = 36;
       };
 
       finder = {
