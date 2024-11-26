@@ -56,7 +56,7 @@ let user = "next"; in
         show-recents = false;
         launchanim = true;
         orientation = "bottom";
-        tilesize = 24;
+        tilesize = 48;
       };
 
       finder = {
