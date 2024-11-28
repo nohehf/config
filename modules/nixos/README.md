@@ -1,4 +1,9 @@
+# nixos
+
+this is an untested WIP
+
 ## Layout
+
 ```
 .
 ├── config             # Config files not written in Nix

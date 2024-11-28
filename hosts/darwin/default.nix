@@ -1,14 +1,10 @@
 { config, pkgs, ... }:
 
-let user = "next"; in
+let user = "nohehf"; in
 
 {
   imports = [
-    ../../modules/darwin/home-manager.nix
-    # Shared configuration
-    # ../../home-manager.nix
-    # ../../packages.nix
-    # ../../files.nix
+    ../../modules/darwin/home.nix
   ];
 
   services.nix-daemon.enable = true;

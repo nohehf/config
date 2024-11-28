@@ -1,7 +1,7 @@
 { config, pkgs, lib, home-manager, ... }:
 
 let
-  user = "next";
+  user = "nohehf";
   sharedFiles = import ../../files.nix { inherit config pkgs; };
   additionalFiles = import ./files.nix { inherit user config pkgs; };
 in
@@ -10,7 +10,6 @@ in
     ./dock
   ];
 
-  # It me
   users.users.${user} = {
     name = "${user}";
     home = "/Users/${user}";
@@ -52,7 +51,7 @@ in
         ];
         stateVersion = "23.11";
       };
-      programs = { } // import ../../home-manager.nix { inherit config pkgs lib; };
+      programs = { } // import ../../programs.nix { inherit config pkgs lib; };
 
       # Marked broken Oct 20, 2022 check later to remove this
       # https://github.com/nix-community/home-manager/issues/3344
@@ -66,7 +65,7 @@ in
     # { path = "/Applications/Slack.app/"; }
     { path = "/System/Applications/Messages.app/"; }
     # { path = "/System/Applications/Facetime.app/"; }
-    { path = "${pkgs.alacritty}/Applications/Alacritty.app/"; }
+    # { path = "${pkgs.alacritty}/Applications/Alacritty.app/"; }
     # { path = "${pkgs.visual-studio-code}"; } // todo find vscode path
     # { path = "/System/Applications/Music.app/"; }
     # { path = "/System/Applications/News.app/"; }

@@ -1,9 +1,9 @@
 { config, pkgs, lib, ... }:
 
 let
-  user = "next";
+  user = "nohehf";
   xdg_configHome = "/home/${user}/.config";
-  shared-programs = import ../../home-manager.nix { inherit config pkgs lib; };
+  shared-programs = import ../../home.nix { inherit config pkgs lib; };
   shared-files = import ../../files.nix { inherit config pkgs; };
 
   polybar-user_modules = builtins.readFile (pkgs.substituteAll {

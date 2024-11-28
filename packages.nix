@@ -2,7 +2,7 @@
 
 with pkgs; [
   # General packages for development and system management
-  alacritty
+  # alacritty
   # aspell
   # aspellDicts.en
   # bash-completion
@@ -53,7 +53,7 @@ with pkgs; [
   # tmux
   # unrar
   # unzip
-  zsh-powerlevel10k
+  # zsh-powerlevel10k
 
   # Python packages
   # python3
