@@ -52,18 +52,30 @@ let user = "nohehf"; in
 
       dock = {
         autohide = true;
-        autohide-time-modifier = 0.5;
-        autohide-delay = 0.1;
+        autohide-time-modifier = 0.2;
+        autohide-delay = 0.0;
         show-recents = false;
         launchanim = true;
         orientation = "bottom";
-        tilesize = 36;
+
+        # does not exist apprently
+        # size-immutable = true;
+        tilesize = 35;
       };
 
       finder = {
         _FXShowPosixPathInTitle = false;
+        AppleShowAllFiles = true;
+
+        # bottom status bar
+        ShowStatusBar = true;
+        ShowPathbar = true;
+
+        # default to list view
+        FXPreferredViewStyle = "Nlsv";
       };
 
+      # https://github.com/LnL7/nix-darwin/blob/master/modules/system/defaults/trackpad.nix
       trackpad = {
         Clicking = true;
         TrackpadThreeFingerDrag = true;

@@ -1,0 +1,23 @@
+# TODO: this could be moved to nix
+[user]
+	email = nohe.hinniger.foray@gmail.com
+	name = nohehf
+	signingkey = nohehf
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
+[init]
+	defaultBranch = main
+[diff]
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+    tool = vscode
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
+[credential]
+	helper = store
+[core]
+	hooksPath = /dev/null

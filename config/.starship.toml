@@ -1,0 +1,71 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = false
+
+command_timeout = 2000
+
+# Missing features: zsh transient prompt, git wip indicator 
+# discussion on transient prompt: https://github.com/spaceship-prompt/spaceship-prompt/issues/775#issuecomment-977161851, https://github.com/romkatv/powerlevel10k/issues/888#issuecomment-657969840
+
+[docker_context]
+disabled = true
+
+[package]
+disabled = true
+
+[golang]
+symbol = "[~](white dimmed)"
+format = '[$symbol($version )]($style)'
+version_format = "${major}.${minor}.${patch}"
+
+[python]
+symbol = "[~](white dimmed)"
+format = '[$symbol($version )]($style)'
+version_format = "${major}.${minor}.${patch}"
+
+[nodejs]
+symbol = "[~](white dimmed)"
+format = '[$symbol($version )]($style)'
+version_format = "${major}.${minor}.${patch}"
+
+[rust]
+symbol = "[~](white dimmed)"
+format = '[$symbol($version )]($style)'
+version_format = "${major}.${minor}.${patch}"
+
+[ocaml]
+symbol = "🐫[~](white dimmed)"
+format = '[$symbol($version )]($style)'
+version_format = "${major}.${minor}.${patch}"
+
+[c]
+symbol = "c[~](white dimmed)"
+format = '[$symbol($version )]($style)'
+version_format = "${major}.${minor}.${patch}"
+style = "blue bold"
+
+[aws]
+disabled = true
+
+# missing features: only show when k command is typed, shorter name. see oh-my-zsh plugin
+[kubernetes]
+disabled = true
+style = "purple"
+
+[git_status]
+style = "white dimmed"
+ahead = "[⇡${count}](green bold)"
+behind = "[⇣${count}](green bold)"
+staged = "[+${count}](green)"
+deleted = "[✘${count}](red)"
+modified = "[!${count}](yellow)"
+conflicted = "[~${count}](red bold)"
+diverged = "[±${count}](purple bold)"
+renamed = "[»${count}](white)"
+stashed = "[*${count}](cyan bold)"
+untracked = "[?${count}](blue)"
+
+[git_branch]
+format = "[$symbol$branch(:$remote_branch)]($style) "
