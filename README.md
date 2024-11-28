@@ -11,10 +11,10 @@ programs.nix -> declarative configuration of packages (home-manager global progr
 /!\ make shure to git add before running
 
 just test the build:
-nix run .#build
+`nix run .#build`
 
 apply the new switch
-rix run .#build-switch
+`rix run .#build-switch`
 
 ## acknoledgments
 

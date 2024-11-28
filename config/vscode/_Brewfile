@@ -1,3 +1,4 @@
+# THIS should be migrated to nix
 vscode "vscode-icons-team.vscode-icons"
 vscode "Equinusocio.vsc-material-theme"
 vscode "BriteSnow.vscode-toggle-quotes"
