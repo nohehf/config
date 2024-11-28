@@ -6,7 +6,7 @@ let
   email = "nohehf@example.com";
 in
 {
-  zsh = import ./config/zsh.nix { inherit config pkgs lib name email; };
+  # zsh = import ./config/zsh.nix { inherit config pkgs lib name email; };
   vim = import ./config/vim.nix { inherit config pkgs lib name email; };
 
   alacritty = {
@@ -76,30 +76,30 @@ in
     };
   };
 
-  ssh = {
-    enable = true;
-    includes = [
-      (lib.mkIf pkgs.stdenv.hostPlatform.isLinux
-        "/home/${user}/.ssh/config_external"
-      )
-      (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin
-        "/Users/${user}/.ssh/config_external"
-      )
-    ];
-    matchBlocks = {
-      "github.com" = {
-        identitiesOnly = true;
-        identityFile = [
-          (lib.mkIf pkgs.stdenv.hostPlatform.isLinux
-            "/home/${user}/.ssh/id_github"
-          )
-          (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin
-            "/Users/${user}/.ssh/id_github"
-          )
-        ];
-      };
-    };
-  };
+  # ssh = {
+  #   enable = true;
+  #   includes = [
+  #     (lib.mkIf pkgs.stdenv.hostPlatform.isLinux
+  #       "/home/${user}/.ssh/config_external"
+  #     )
+  #     (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin
+  #       "/Users/${user}/.ssh/config_external"
+  #     )
+  #   ];
+  #   matchBlocks = {
+  #     "github.com" = {
+  #       identitiesOnly = true;
+  #       identityFile = [
+  #         (lib.mkIf pkgs.stdenv.hostPlatform.isLinux
+  #           "/home/${user}/.ssh/id_github"
+  #         )
+  #         (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin
+  #           "/Users/${user}/.ssh/id_github"
+  #         )
+  #       ];
+  #     };
+  #   };
+  # };
 
   # tmux = {
   #   enable = true;

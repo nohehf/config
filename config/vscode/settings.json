@@ -1,0 +1,94 @@
+{
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[ocaml]": {
+    "editor.defaultFormatter": "ocamllabs.ocaml-platform"
+  },
+  "[python]": {
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnType": true,
+    "editor.wordBasedSuggestions": "off",
+    "gitlens.codeLens.symbolScopes": ["!Module"]
+  },
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.accessibilitySupport": "off",
+  "editor.fontFamily": "JetBrainsMono Nerd Font",
+  "editor.formatOnSave": true,
+  "editor.minimap.enabled": false,
+  "editor.unicodeHighlight.allowedCharacters": {
+    "é": true
+  },
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "explorer.confirmDelete": false,
+  "git.confirmSync": false,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  },
+  "java.completion.favoriteStaticMembers": [
+    "org.junit.Assert.*",
+    "org.junit.Assume.*",
+    "org.junit.jupiter.api.Assertions.*",
+    "org.junit.jupiter.api.Assumptions.*",
+    "org.junit.jupiter.api.DynamicContainer.*",
+    "org.junit.jupiter.api.DynamicTest.*",
+    "org.mockito.Mockito.*",
+    "org.mockito.ArgumentMatchers.*",
+    "org.mockito.Answers.*"
+  ],
+  "python.defaultInterpreterPath": "~/.pyenv/shims/python",
+  "svelte.enable-ts-plugin": true,
+  "svelte.plugin.svelte.defaultScriptLanguage": "ts",
+  "svelte.plugin.svelte.rename.enable": false,
+  "terminal.integrated.env.osx": {
+    "CW_NEW_SESSION": "1",
+    "FIG_NEW_SESSION": "1"
+  },
+  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.fontWeight": "normal",
+  "terminal.integrated.tabs.enabled": false,
+  "typescript.updateImportsOnFileMove.enabled": "never",
+  "workbench.colorCustomizations": {
+    "panel.border": "#363a48",
+    "sideBar.border": "#363a48",
+    "tree.indentGuidesStroke": "#8d36e9"
+  },
+  "workbench.colorTheme": "Material Theme Palenight",
+  "workbench.editor.customLabels.patterns": {
+    "**/routes/**/+layout.*": "${dirname(1)}/${dirname}.${extname}",
+    "**/routes/**/+page.*": "${dirname(1)}/${dirname}/+.${extname}"
+  },
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.tree.indent": 15,
+  "workbench.tree.renderIndentGuides": "always",
+  "prisma.showPrismaDataPlatformNotification": false,
+  "github.copilot.editor.enableAutoCompletions": true,
+  "go.toolsManagement.autoUpdate": true,
+  "[svelte]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  }
+}

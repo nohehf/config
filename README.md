@@ -19,3 +19,9 @@ rix run .#build-switch
 ## acknoledgments
 
 This is based on: <https://github.com/dustinlyons/nixos-config>
+
+## TODO
+
+- secret management
+- merge host and modules to simplify structure
+- add install script

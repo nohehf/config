@@ -2,8 +2,7 @@
 
 let
   user = "nohehf";
-  sharedFiles = import ../../files.nix { inherit config pkgs; };
-  additionalFiles = import ./files.nix { inherit user config pkgs; };
+  HOME = builtins.getEnv "HOME";
 in
 {
   imports = [
@@ -45,10 +44,7 @@ in
       home = {
         enableNixpkgsReleaseCheck = false;
         packages = pkgs.callPackage ./packages.nix { };
-        file = lib.mkMerge [
-          sharedFiles
-          additionalFiles
-        ];
+        file = import ../../files.nix { inherit config pkgs; };
         stateVersion = "23.11";
       };
       programs = { } // import ../../programs.nix { inherit config pkgs lib; };
