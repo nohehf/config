@@ -1,6 +1,8 @@
 { pkgs }:
 
 with pkgs; [
+  cowsay
+
   # General packages for development and system management
   # alacritty
   # aspell

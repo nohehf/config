@@ -3,7 +3,7 @@
 let
   name = "nohehf";
   user = "nohehf";
-  email = "nohehf@example.com";
+  email = "nohe.hinniger.foray@gmail.con";
 in
 {
   vim = import ./config/vim.nix { inherit config pkgs lib name email; };
