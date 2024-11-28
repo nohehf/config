@@ -1,9 +1,11 @@
 { pkgs, config, ... }:
 let
-  HOME = builtins.getEnv "HOME";
+  HOME = config.home.homeDirectory;
   CONFIG = "${HOME}/config/config";
+  CODE = "${HOME}/Library/Application Support/Code/User";
+  mksym = config.lib.file.mkOutOfStoreSymlink;
 in
 {
-  "${HOME}/Library/Application Support/Code/User/settings.json".source = config.lib.file.mkOutOfStoreSymlink "/Users/nohehf/config/config/vscode/settings.json";
-  "${HOME}/Library/Application Support/Code/User/keybindings.json".source = config.lib.file.mkOutOfStoreSymlink "${CONFIG}/vscode/keybindings.json";
+  "${CODE}/settings.json".source = mksym "${CONFIG}/vscode/settings.json";
+  "${CODE}//keybindings.json".source = mksym "${CONFIG}/vscode/keybindings.json";
 }
