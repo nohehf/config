@@ -15,6 +15,7 @@ in
   "${HOME}/.zshrc".source = mksym "${CONFIG}/.zshrc";
   "${HOME}/lib.sh".source = mksym "${CONFIG}/lib.sh";
   "${HOME}/.config/starship.toml".source = mksym "${CONFIG}/.starship.toml";
+  "${HOME}/.config/nvim".source = mksym "${CONFIG}/nvim";
 
   # TODO: manage secrets properly
   "${HOME}/.secrets".source = mksym "${HOME}/config/secrets";

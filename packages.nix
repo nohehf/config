@@ -1,8 +1,8 @@
 { pkgs }:
 
 with pkgs; [
-  cowsay
-
+  fastfetch
+  neovim
   # General packages for development and system management
   # alacritty
   # aspell
