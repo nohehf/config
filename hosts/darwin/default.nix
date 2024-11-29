@@ -36,6 +36,11 @@ in
   environment.systemPackages = with pkgs; [
   ] ++ (import ../../packages.nix { inherit pkgs; });
 
+  # fonts
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+  ];
+
   # enable sudo touch id auth
   security.pam.enableSudoTouchIdAuth = true;
 

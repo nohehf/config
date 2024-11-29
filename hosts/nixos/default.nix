@@ -295,6 +295,7 @@ in
     }];
   };
 
+  # fonts
   fonts.packages = with pkgs; [
     dejavu_fonts
     emacs-all-the-icons-fonts
@@ -303,6 +304,7 @@ in
     font-awesome
     noto-fonts
     noto-fonts-emoji
+    (nerdfonts.override { fonts = [ "FiraCode" "JetBrains Mono" ]; })
   ];
 
   environment.systemPackages = with pkgs; [
