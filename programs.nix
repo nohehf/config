@@ -1,9 +1,7 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, user, email, ... }:
 
 let
-  name = "nohehf";
-  user = "nohehf";
-  email = "nohe.hinniger.foray@gmail.con";
+  name = user;
 in
 {
   vim = import ./config/vim.nix { inherit config pkgs lib name email; };

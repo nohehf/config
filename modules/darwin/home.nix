@@ -1,7 +1,6 @@
-{ config, pkgs, lib, home-manager, ... }:
+{ config, pkgs, lib, home-manager, user, email, ... }:
 
 let
-  user = "nohehf";
   HOME = builtins.getEnv "HOME";
 in
 {
@@ -47,7 +46,7 @@ in
         file = import ../../files.nix { inherit config pkgs; };
         stateVersion = "23.11";
       };
-      programs = { } // import ../../programs.nix { inherit config pkgs lib; };
+      programs = { } // import ../../programs.nix { inherit config pkgs lib user email; };
 
       # Marked broken Oct 20, 2022 check later to remove this
       # https://github.com/nix-community/home-manager/issues/3344

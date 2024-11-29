@@ -34,6 +34,7 @@
   outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, home-manager, nixpkgs, disko } @inputs:
     let
       user = "nohehf";
+      email = "nohe.hinniger.foray@gmail.com";
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
       darwinSystems = [ "aarch64-darwin" "x86_64-darwin" ];
       forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
@@ -89,30 +90,31 @@
       apps = nixpkgs.lib.genAttrs linuxSystems mkLinuxApps // nixpkgs.lib.genAttrs darwinSystems mkDarwinApps;
 
       darwinConfigurations = nixpkgs.lib.genAttrs darwinSystems (system:
-        let
-          user = "nohehf";
-        in
         darwin.lib.darwinSystem {
           inherit system;
-          specialArgs = inputs;
-          modules = [
-            home-manager.darwinModules.home-manager
-            nix-homebrew.darwinModules.nix-homebrew
-            {
-              nix-homebrew = {
-                inherit user;
-                enable = true;
-                taps = {
-                  "homebrew/homebrew-core" = homebrew-core;
-                  "homebrew/homebrew-cask" = homebrew-cask;
-                  "homebrew/homebrew-bundle" = homebrew-bundle;
+          # specialArgs = inputs;
+          specialArgs = {
+            inherit user email inputs; # Pass user, email, and inputs to the module
+          };
+          modules =
+            [
+              home-manager.darwinModules.home-manager
+              nix-homebrew.darwinModules.nix-homebrew
+              {
+                nix-homebrew = {
+                  inherit user;
+                  enable = true;
+                  taps = {
+                    "homebrew/homebrew-core" = homebrew-core;
+                    "homebrew/homebrew-cask" = homebrew-cask;
+                    "homebrew/homebrew-bundle" = homebrew-bundle;
+                  };
+                  mutableTaps = false;
+                  autoMigrate = true;
                 };
-                mutableTaps = false;
-                autoMigrate = true;
-              };
-            }
-            ./hosts/darwin
-          ];
+              }
+              ./hosts/darwin
+            ];
         }
       );
 
