@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, user, ... }:
 
-let user = "nohehf"; in
+let
+  HOME = config.users.users.${user}.home;
+in
 
 {
   imports = [
@@ -33,6 +35,9 @@ let user = "nohehf"; in
 
   environment.systemPackages = with pkgs; [
   ] ++ (import ../../packages.nix { inherit pkgs; });
+
+  # enable sudo touch id auth
+  security.pam.enableSudoTouchIdAuth = true;
 
   system = {
     stateVersion = 4;
@@ -78,7 +83,15 @@ let user = "nohehf"; in
       # https://github.com/LnL7/nix-darwin/blob/master/modules/system/defaults/trackpad.nix
       trackpad = {
         Clicking = true;
-        TrackpadThreeFingerDrag = true;
+      };
+
+      CustomUserPreferences = {
+        # custom iterm config
+        "com.googlecode.iterm2" = {
+          PrefsCustomFolder = "${HOME}/config/config/iterm";
+          LoadPrefsFromCustomFolder = true;
+        };
+
       };
     };
   };
