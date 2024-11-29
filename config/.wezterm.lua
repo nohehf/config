@@ -16,16 +16,28 @@ local act = wezterm.action
 -- This is where you actually apply your config choices
 
 -- For example, changing the color scheme:
-config.color_scheme = "Catppuccin Mocha"
+-- config.color_scheme = "Catppuccin Mocha"
+-- config.color_scheme = "Material Palenight (base16)"
+-- config.color_scheme = "Hybrid (terminal.sexy)"
+-- config.color_scheme = "dracula (official)"  -- a bit too bright
+-- config.color_scheme = "dracula"
+-- rosepine
+-- local rosepine_theme = wezterm.plugin.require("https://github.com/neapsix/wezterm").main
+-- config.colors = rosepine_theme.colors()
+-- config.window_frame = rosepine_theme.window_frame()
+config.color_scheme = "Tokyo Night"
 config.font = wezterm.font("JetBrains Mono")
-config.window_background_opacity = 0.5
-config.macos_window_background_blur = 30
+
+config.window_background_opacity = 0.9
+config.macos_window_background_blur = 40
 
 -- hide config top bar
 config.window_decorations = "RESIZE"
 
 -- hide tabs if only one is present
 config.hide_tab_bar_if_only_one_tab = true
+config.tab_bar_at_bottom = true
+config.use_fancy_tab_bar = false
 
 config.keys = {
 	-- cmd + d to split horizontally
@@ -44,6 +56,23 @@ config.keys = {
 	{ mods = "CMD", key = "RightArrow", action = act.SendKey({ mods = "CTRL", key = "e" }) },
 	-- cmd backspace to delete to start of line
 	{ mods = "CMD", key = "Backspace", action = act.SendKey({ mods = "CTRL", key = "u" }) },
+
+	-- select pane with cmd + option + arrow
+	{ key = "RightArrow", mods = "CMD|OPT", action = wezterm.action({ ActivatePaneDirection = "Right" }) },
+	{ key = "LeftArrow", mods = "CMD|OPT", action = wezterm.action({ ActivatePaneDirection = "Left" }) },
+	{ key = "UpArrow", mods = "CMD|OPT", action = wezterm.action({ ActivatePaneDirection = "Up" }) },
+	{ key = "DownArrow", mods = "CMD|OPT", action = wezterm.action({ ActivatePaneDirection = "Down" }) },
+
+	-- select pane with vim arrows: hjkl
+	{ key = "l", mods = "CMD|OPT", action = wezterm.action({ ActivatePaneDirection = "Right" }) },
+	{ key = "h", mods = "CMD|OPT", action = wezterm.action({ ActivatePaneDirection = "Left" }) },
+	{ key = "k", mods = "CMD|OPT", action = wezterm.action({ ActivatePaneDirection = "Up" }) },
+	{ key = "j", mods = "CMD|OPT", action = wezterm.action({ ActivatePaneDirection = "Down" }) },
+}
+
+config.inactive_pane_hsb = {
+	saturation = 0.7,
+	brightness = 0.7,
 }
 
 -- and finally, return the configuration to wezterm

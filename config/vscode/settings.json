@@ -71,7 +71,7 @@
     "sideBar.border": "#363a48",
     "tree.indentGuidesStroke": "#8d36e9"
   },
-  "workbench.colorTheme": "Material Theme Palenight",
+  "workbench.colorTheme": "Tokyo Night",
   "workbench.editor.customLabels.patterns": {
     "**/routes/**/+layout.*": "${dirname(1)}/${dirname}.${extname}",
     "**/routes/**/+page.*": "${dirname(1)}/${dirname}/+.${extname}"
