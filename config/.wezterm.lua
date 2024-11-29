@@ -39,6 +39,9 @@ config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 
+-- enable hyperlinks
+config.hyperlink_rules = wezterm.default_hyperlink_rules()
+
 config.keys = {
 	-- cmd + d to split horizontally
 	{ key = "d", mods = "CMD", action = act({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },
@@ -68,6 +71,42 @@ config.keys = {
 	{ key = "h", mods = "CMD|OPT", action = wezterm.action({ ActivatePaneDirection = "Left" }) },
 	{ key = "k", mods = "CMD|OPT", action = wezterm.action({ ActivatePaneDirection = "Up" }) },
 	{ key = "j", mods = "CMD|OPT", action = wezterm.action({ ActivatePaneDirection = "Down" }) },
+
+	-- clipboard
+	{ key = "c", mods = "CMD", action = act.CopyTo("ClipboardAndPrimarySelection") },
+	{ key = "v", mods = "CMD", action = act.PasteFrom("Clipboard") },
+}
+
+-- ctrl + click or cmd + click to open link
+config.mouse_bindings = {
+	-- Disable the default click behavior
+	{
+		event = { Up = { streak = 1, button = "Left" } },
+		mods = "NONE",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
+	-- Ctrl-click will open the link under the mouse cursor
+	{
+		event = { Up = { streak = 1, button = "Left" } },
+		mods = "CTRL",
+		action = wezterm.action.OpenLinkAtMouseCursor,
+	},
+	{
+		event = { Up = { streak = 1, button = "Left" } },
+		mods = "CMD",
+		action = wezterm.action.OpenLinkAtMouseCursor,
+	},
+	-- Disable the Ctrl-click down event to stop programs from seeing it when a URL is clicked
+	{
+		event = { Down = { streak = 1, button = "Left" } },
+		mods = "CTRL",
+		action = wezterm.action.Nop,
+	},
+	{
+		event = { Down = { streak = 1, button = "Left" } },
+		mods = "CMD",
+		action = wezterm.action.Nop,
+	},
 }
 
 config.inactive_pane_hsb = {

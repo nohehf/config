@@ -47,6 +47,7 @@ in
   system = {
     stateVersion = 4;
 
+    # nice ressource: <https://macos-defaults.com/>
     defaults = {
       NSGlobalDomain = {
         AppleShowAllExtensions = true;
@@ -77,12 +78,14 @@ in
         _FXShowPosixPathInTitle = false;
         AppleShowAllFiles = true;
 
+        # Search current folder
+        FXDefaultSearchScope = "SCcf";
+        # Column view by default
+        FXPreferredViewStyle = "clmv";
+
         # bottom status bar
         ShowStatusBar = true;
         ShowPathbar = true;
-
-        # default to list view
-        FXPreferredViewStyle = "Nlsv";
       };
 
       # https://github.com/LnL7/nix-darwin/blob/master/modules/system/defaults/trackpad.nix
