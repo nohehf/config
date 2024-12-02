@@ -6,11 +6,11 @@ let
 in
 {
   imports = [
-    ../../modules/nixos/disk-config.nix
-    ../../home-manager.nix
-    ../../packages.nix
-    ../../default.nix
-    ../../files.nix
+    ../modules/nixos/disk-config.nix
+    ../home-manager.nix
+    ../packages.nix
+    ../default.nix
+    ../files.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -90,7 +90,7 @@ in
         lightdm = {
           enable = true;
           greeters.slick.enable = true;
-          background = ../../modules/nixos/config/login-wallpaper.png;
+          # background = ../../modules/nixos/config/login-wallpaper.png;
         };
       };
 

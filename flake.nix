@@ -113,7 +113,7 @@
                   autoMigrate = true;
                 };
               }
-              ./hosts/darwin
+              ./darwin/host.nix
             ];
         }
       );
@@ -128,10 +128,10 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.${user} = import ./modules/nixos/home-manager.nix;
+              users.${user} = import ./nixos/home.nix;
             };
           }
-          ./hosts/nixos
+          ./nixos/host.nix
         ];
       });
     };

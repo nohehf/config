@@ -1,5 +1,7 @@
 # nohehf nix based config
 
+> ⚠️ This is a WIP. Darwin works but is not well documented, nixos is currently broken.
+
 files.nix -> creates symlinks to given files (to manage actual dotfiles)
 flake.nix -> entry point
 packages.nix -> declarative list of packages to install from nixpkgs

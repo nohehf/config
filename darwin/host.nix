@@ -6,7 +6,7 @@ in
 
 {
   imports = [
-    ../../modules/darwin/home.nix
+    ./home.nix
   ];
 
   services.nix-daemon.enable = true;
@@ -35,7 +35,7 @@ in
 
   # mac-os specifig packages
   environment.systemPackages = with pkgs; [
-  ] ++ (import ../../packages.nix { inherit pkgs; });
+  ] ++ (import ../packages.nix { inherit pkgs; });
 
   # fonts
   fonts.packages = with pkgs; [
