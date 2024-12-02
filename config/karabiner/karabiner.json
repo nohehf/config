@@ -35,6 +35,27 @@
                         ]
                     },
                     {
+                        "description": "Right command to ctrl",
+                        "manipulators": [
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "right_commnad",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_control"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
                         "description": "Remap SUPER (shift + ctrl + option + cmd) + c to a long combination with all modifiers and extra keys",
                         "manipulators": [
                             {
