@@ -9,13 +9,15 @@ with pkgs; [
   # aspellDicts.en
   # bash-completion
   bat
-  # btop
+  ripgrep
+  btop
+  git
   # coreutils
   # killall
   # neofetch
   # openssh
   # sqlite
-  # wget
+  wget
   # zip
 
   # Encryption and security tools

@@ -71,7 +71,19 @@ function c() {
 }
 
 function v() {
-  nvim ${1:-.}
+  # If no argument is passed, open Neovim in the current directory
+  if [ $# -eq 0 ]; then
+    nvim .
+  # If the argument is a directory, cd into it and open Neovim there
+  elif [ -d "$1" ]; then
+    cd "$1" && nvim .
+  # If the argument is a file, open the file in Neovim
+  elif [ -f "$1" ]; then
+    nvim "$1"
+  else
+    # If it's neither a file nor a directory, show an error
+    echo "Error: '$1' is not a valid file or directory."
+  fi
 }
 
 # opam configuration

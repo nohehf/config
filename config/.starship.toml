@@ -69,3 +69,6 @@ untracked = "[?${count}](blue)"
 
 [git_branch]
 format = "[$symbol$branch(:$remote_branch)]($style) "
+
+[nix_shell]
+heuristic = true
