@@ -33,6 +33,7 @@ in
 
   system.checks.verifyNixPath = false;
 
+  # mac-os specifig packages
   environment.systemPackages = with pkgs; [
   ] ++ (import ../../packages.nix { inherit pkgs; });
 
@@ -100,6 +101,39 @@ in
           LoadPrefsFromCustomFolder = true;
         };
 
+        # custom keyboard layout
+        "com.apple.HIToolbox" = {
+          AppleCurrentKeyboardLayoutInputSourceID = "com.apple.keyboardlayout.qwerty-fr.keylayout.qwerty-fr";
+          AppleEnabledInputSources = [
+            {
+              "Bundle ID" = "com.apple.CharacterPaletteIM";
+              InputSourceKind = "Non Keyboard Input Method";
+            }
+            {
+              "Bundle ID" = "com.apple.PressAndHold";
+              InputSourceKind = "Non Keyboard Input Method";
+            }
+          ];
+          AppleFnUsageType = 2;
+          AppleInputSourceHistory = [
+            {
+              InputSourceKind = "Keyboard Layout";
+              "KeyboardLayout ID" = "-7247";
+              "KeyboardLayout Name" = "qwerty-fr";
+            }
+          ];
+          AppleSelectedInputSources = [
+            {
+              "Bundle ID" = "com.apple.PressAndHold";
+              InputSourceKind = "Non Keyboard Input Method";
+            }
+            {
+              InputSourceKind = "Keyboard Layout";
+              "KeyboardLayout ID" = "-7247";
+              "KeyboardLayout Name" = "qwerty-fr";
+            }
+          ];
+        };
       };
     };
   };

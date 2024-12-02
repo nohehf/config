@@ -81,8 +81,8 @@ function v() {
   elif [ -f "$1" ]; then
     nvim "$1"
   else
-    # If it's neither a file nor a directory, show an error
-    echo "Error: '$1' is not a valid file or directory."
+    # If the argument is neither a file nor a directory, open it as a new file in Neovim
+    nvim "$1"
   fi
 }
 

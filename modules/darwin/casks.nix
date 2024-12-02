@@ -23,4 +23,7 @@ _:
 
   # Browsers
   "google-chrome"
+
+  # custom layout
+  "qwerty-fr"
 ]
