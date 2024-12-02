@@ -1,4 +1,11 @@
-{ config, pkgs, lib, name, email, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  name,
+  email,
+  ...
+}:
 
 {
   enable = true;

@@ -1,69 +1,23 @@
 { pkgs }:
 
-with pkgs; [
+with pkgs;
+[
+  # General tools
   fastfetch
   neovim
-  # General packages for development and system management
-  # alacritty
-  # aspell
-  # aspellDicts.en
-  # bash-completion
   bat
   ripgrep
   btop
   git
-  # coreutils
-  # killall
-  # neofetch
-  # openssh
-  # sqlite
   wget
-  # zip
 
-  # Encryption and security tools
-  # age
-  # age-plugin-yubikey
-  # gnupg
-  # libfido2
-
-  # Cloud-related tools and SDKs
-  # docker
-  # docker-compose
-
-  # Media-related packages
-  # emacs-all-the-icons-fonts
-  # dejavu_fonts
-  # ffmpeg
-  # fd
-  # font-awesome
-  # hack-font
-  # noto-fonts
-  # noto-fonts-emoji
-  # meslo-lgs-nf
-
-  # Node.js development tools
-  # nodePackages.npm # globally install npm
-  # nodePackages.prettier
-  # nodejs
-
-  # Text and terminal utilities
-  # htop
-  # hunspell
-  # iftop
+  # Fonts
   jetbrains-mono
-  # jq
-  # ripgrep
-  # tree
-  # tmux
-  # unrar
-  # unzip
-  # zsh-powerlevel10k
 
-  # Python packages
-  # python3
-  # virtualenv
-
-  # Nix related
+  # Language tools
+  ## Nix
   nixpkgs-fmt
+  nixfmt-rfc-style # nixfmt
   nil
+  nixd
 ]

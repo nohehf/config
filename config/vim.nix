@@ -1,8 +1,22 @@
-{ config, pkgs, lib, name, email, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  name,
+  email,
+  ...
+}:
 {
   enable = true;
-  plugins = with pkgs.vimPlugins; [ vim-airline vim-airline-themes vim-startify vim-tmux-navigator ];
-  settings = { ignorecase = true; };
+  plugins = with pkgs.vimPlugins; [
+    vim-airline
+    vim-airline-themes
+    vim-startify
+    vim-tmux-navigator
+  ];
+  settings = {
+    ignorecase = true;
+  };
   extraConfig = ''
     "" General
     set number

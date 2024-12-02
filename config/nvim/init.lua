@@ -643,6 +643,8 @@ require('lazy').setup({
       --  You can press `g?` for help in this menu.
       require('mason').setup()
 
+      -- TODO: restructure this to make it easier to add formatters / lsps
+
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
@@ -662,6 +664,9 @@ require('lazy').setup({
             require('lspconfig')[server_name].setup(server)
           end,
         },
+
+        -- extra lsps not supported by mason
+        require('lspconfig').nixd.setup {},
       }
     end,
   },
@@ -700,6 +705,7 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        nix = { 'nixfmt' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
