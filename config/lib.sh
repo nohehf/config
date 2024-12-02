@@ -244,11 +244,3 @@ exsource () {
     set +o allexport
 }
 
-function mkcd() {
-  mkdir -p $@ && cd ${@:$#}
-}
-
-# Vscode c command, opens vscode in the current directory if no argument is given else opens vscode in the given directory
-function c() {
-  code ${1:-.}
-}

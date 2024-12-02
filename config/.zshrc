@@ -60,6 +60,20 @@ export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
+# Helper functions
+function mkcd() {
+  mkdir -p $@ && cd ${@:$#}
+}
+
+# Vscode c command, opens vscode in the current directory if no argument is given else opens vscode in the given directory
+function c() {
+  code ${1:-.}
+}
+
+function v() {
+  nvim ${1:-.}
+}
+
 # opam configuration
 [[ ! -r /Users/nohehf/.opam/opam-init/init.zsh ]] || source /Users/nohehf/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
