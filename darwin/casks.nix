@@ -26,4 +26,7 @@ _:
 
   # custom layout
   "qwerty-fr"
+
+  # remap keys, mostly for SUPER (shift + ctrl + option + command)
+  "karabiner-elements"
 ]
