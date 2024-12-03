@@ -23,7 +23,7 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-    # Needed for aerospace
+    # Needed for aerospace; TODO: simplify adding taps
     nikitabobko-tap = {
       url = "github:nikitabobko/homebrew-tap";
       flake = false;
