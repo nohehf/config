@@ -29,4 +29,6 @@ _:
 
   # remap keys, mostly for SUPER (shift + ctrl + option + command)
   "karabiner-elements"
+
+  "aerospace"
 ]

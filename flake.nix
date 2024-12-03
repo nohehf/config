@@ -23,6 +23,11 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    # Needed for aerospace
+    nikitabobko-tap = {
+      url = "github:nikitabobko/homebrew-tap";
+      flake = false;
+    };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,6 +44,7 @@
       homebrew-bundle,
       homebrew-core,
       homebrew-cask,
+      nikitabobko-tap,
       home-manager,
       nixpkgs,
       disko,
@@ -132,14 +138,16 @@
             nix-homebrew.darwinModules.nix-homebrew
             {
               nix-homebrew = {
-                inherit user;
+                user = "nohehf";
                 enable = true;
+                enableRosetta = true;
                 taps = {
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;
                   "homebrew/homebrew-bundle" = homebrew-bundle;
+                  "nikitabobko/homebrew-tap" = nikitabobko-tap;
                 };
-                mutableTaps = false;
+                mutableTaps = true; # TODO: it seems that mutable tabs = true doesn't work; open issue
                 autoMigrate = true;
               };
             }
