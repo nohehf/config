@@ -30,3 +30,12 @@ This is based on: <https://github.com/dustinlyons/nixos-config>
 
 Aerospace:
 - Bootstrap workspaces scripts (go to browser workspace and open browser if not present) 
+
+- Fix keybinds: layout (qwerty-fr) and aerospace overlaps (alt + 8 for insance).
+
+## Keybinds / modifiers rationnale
+
+Windows (aerospace): ALT (+ SHIFT) -> this needs to be changed, cf. TODOs
+Open apps (raycast): HYPER -> this needs to be fixed or changed, as it will not only open but focus existing windows, I just want to start them.
+Terminal panes: CMD + OPTION -> This should be only command I believe. Need to make it feel like aerospace too.
+

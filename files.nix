@@ -17,7 +17,7 @@ in
   "${HOME}/.config/starship.toml".source = mksym "${CONFIG}/.starship.toml";
   "${HOME}/.config/nvim".source = mksym "${CONFIG}/nvim";
   "${HOME}/.config/karabiner".source = mksym "${CONFIG}/karabiner";
-  "${HOME}/.config/aerospace/aerospace.toml".source = mksym "${CONFIG}/aerospace.toml";
+  "${HOME}/.config/aerospace".source = mksym "${CONFIG}/aerospace";
   # TODO: manage secrets properly
   "${HOME}/.secrets".source = mksym "${HOME}/config/secrets";
 }

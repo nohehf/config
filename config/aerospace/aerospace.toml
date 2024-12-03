@@ -4,16 +4,10 @@
 # You can use it to add commands that run after login to macOS user session.
 # 'start-at-login' needs to be 'true' for 'after-login-command' to work
 # Available commands: https://nikitabobko.github.io/AeroSpace/commands
-after-login-command = [
-  'exec-and-forget borders active_color=0x636DA6FF inactive_color=0x00000000 width=4.0',
-]
-
-# Setup jankyboarders
-# TODO: this does not work for some reason, fix it
-
+after-login-command = []
 
 after-startup-command = [
-  'exec-and-forget borders active_color=0x636DA6FF inactive_color=0x00000000 width=4.0',
+  'exec-and-forget borders active_color=0x636DA6FF inactive_color=0x00000000 width=6.0',
 ]
 # Start AeroSpace at login
 start-at-login = true
