@@ -27,3 +27,6 @@ This is based on: <https://github.com/dustinlyons/nixos-config>
 - secret management
 - merge host and modules to simplify structure
 - add install script
+
+Aerospace:
+- Bootstrap workspaces scripts (go to browser workspace and open browser if not present) 

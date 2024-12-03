@@ -8,4 +8,5 @@ shared-packages
 ++ [
   ## macOS only packages
   dockutil
+  jankyborders
 ]
