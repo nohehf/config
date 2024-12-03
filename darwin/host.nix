@@ -92,8 +92,8 @@ in
         show-recents = false;
         launchanim = true;
         orientation = "bottom";
-
         # does not exist apprently
+        # TODO: open PR for this
         # size-immutable = true;
         tilesize = 35;
       };
@@ -118,6 +118,10 @@ in
       };
 
       CustomUserPreferences = {
+        "com.apple.dock" = {
+          size-immutable = true;
+        };
+
         # custom iterm config
         "com.googlecode.iterm2" = {
           PrefsCustomFolder = "${HOME}/config/config/iterm";
