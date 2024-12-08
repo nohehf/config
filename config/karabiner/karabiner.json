@@ -4,7 +4,7 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Caps Lock as HYPER (Command + Control + Option + Shift) when held, Escape when pressed alone",
+                        "description": "Caps Lock as HYPER (Command + Control + Option) when held, Escape when pressed alone",
                         "manipulators": [
                             {
                                 "from": {
@@ -13,8 +13,8 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_shift",
-                                        "modifiers": ["left_command", "left_control", "left_option"]
+                                        "key_code": "left_option",
+                                        "modifiers": ["left_command", "left_control"]
                                     }
                                 ],
                                 "to_if_alone": [{ "key_code": "escape" }],
@@ -36,17 +36,17 @@
                         ]
                     },
                     {
-                        "description": "Remap SUPER (shift + ctrl + option + cmd) + c to a long combination with all modifiers and extra keys",
+                        "description": "Remap HYPER (Command + Control + Option) + c to HYPER + f19 (to avoid some macos default keymap)",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "c",
-                                    "modifiers": { "mandatory": ["left_shift", "left_command", "left_control", "left_option"] }
+                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_option"] }
                                 },
                                 "to": [
                                     {
                                         "key_code": "f19",
-                                        "modifiers": ["left_shift", "left_command", "left_control", "left_option"]
+                                        "modifiers": ["left_command", "left_control", "left_option"]
                                     }
                                 ],
                                 "type": "basic"

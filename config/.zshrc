@@ -36,6 +36,9 @@ source <(kubectl completion zsh)
 # Docker 
 source <(docker completion zsh)
 
+# Atuin
+echo 'eval "$(atuin init zsh)"' >> ~/.zshrc
+
 # zsh stuff
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -101,3 +104,4 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+eval "$(atuin init zsh)"

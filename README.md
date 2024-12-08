@@ -39,3 +39,8 @@ Windows (aerospace): ALT (+ SHIFT) -> this needs to be changed, cf. TODOs
 Open apps (raycast): HYPER -> this needs to be fixed or changed, as it will not only open but focus existing windows, I just want to start them.
 Terminal panes: CMD + OPTION -> This should be only command I believe. Need to make it feel like aerospace too.
 
+### Thinking:
+
+Maybe re mapping HYPER to: cmd + option + ctrl and using it as main modifier for aerospace would be nice (HYPER + SHIFT to move windows)
+Tho that would mean removing the mapping for launching apps (ie. HYPER + T would move to the Terminal workspace).
+HOWEVER, I think the only apps i really need to start on the fly are browser and terminal. Clipboard access is nice too.

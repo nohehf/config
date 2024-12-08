@@ -11,6 +11,10 @@ with pkgs;
   git
   wget
 
+  fzf
+  atuin
+  helix
+
   # Fonts
   jetbrains-mono
 
