@@ -28,4 +28,12 @@ in
     extraConfig = builtins.readFile ./config/.wezterm.lua;
   };
 
+  # Atuin managed by home-manager
+  atuin = {
+    enable = true;
+    settings = {
+      style = "compact";
+      inline_height = 40;
+    };
+  };
 }

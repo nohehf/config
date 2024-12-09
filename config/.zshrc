@@ -36,19 +36,12 @@ source <(kubectl completion zsh)
 # Docker 
 source <(docker completion zsh)
 
-# Atuin
-echo 'eval "$(atuin init zsh)"' >> ~/.zshrc
-
 # zsh stuff
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# search history with up/down arrow keys (https://superuser.com/a/585004)
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey "^[[A" up-line-or-beginning-search # Up
-bindkey "^[[B" down-line-or-beginning-search # Down
+
+# Atuin
+eval "$(atuin init zsh)"
 
 # Lib postgres (to remove if installing the full postgres)
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
@@ -104,4 +97,3 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-eval "$(atuin init zsh)"

@@ -12,7 +12,7 @@ with pkgs;
   wget
 
   fzf
-  atuin
+  # atuin
   helix
 
   # Fonts
