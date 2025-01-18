@@ -22,7 +22,7 @@ version_format = "${major}.${minor}.${patch}"
 
 [python]
 symbol = "[~](white dimmed)"
-format = '[$symbol($version )]($style)'
+format = '[$symbol($version)[\(${virtualenv}\)](white dimmed) ]($style)'
 version_format = "${major}.${minor}.${patch}"
 
 [nodejs]
