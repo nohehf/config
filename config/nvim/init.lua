@@ -308,7 +308,7 @@ require('lazy').setup({
         -- },
         pickers = {
           find_files = {
-            hidden = true,
+            -- hidden = true,
           },
         },
         extensions = {
@@ -327,6 +327,12 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<leader>sf', function()
+        builtin.find_files { hidden = false }
+      end, { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<leader>saf', function()
+        builtin.find_files { hidden = true }
+      end, { desc = '[S]earch [A]ll [F]iles' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
@@ -527,8 +533,9 @@ require('lazy').setup({
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+      --        TODO: Add servers and other to separate file for easy access
       local servers = {
-        -- clangd = {},
+        clangd = {},
         gopls = {},
         -- pyright = {},
         rust_analyzer = {},
@@ -569,6 +576,8 @@ require('lazy').setup({
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
+
+      -- Add formatters here
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
       })
@@ -628,6 +637,7 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         nix = { 'nixfmt' },
+        markdown = { 'markdownlint' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
