@@ -150,6 +150,38 @@ require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
+  {
+    'mrjones2014/smart-splits.nvim',
+
+    -- don't lazy load
+    event = 'VimEnter',
+
+    config = function()
+      require('smart-splits').setup {}
+
+      vim.keymap.set('n', '<A-h>', require('smart-splits').resize_left)
+      vim.keymap.set('n', '<A-j>', require('smart-splits').resize_down)
+      vim.keymap.set('n', '<A-k>', require('smart-splits').resize_up)
+      vim.keymap.set('n', '<A-l>', require('smart-splits').resize_right)
+      -- moving between splits
+      vim.keymap.set('n', '<C-h>', require('smart-splits').move_cursor_left)
+      vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_down)
+      vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_up)
+      vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_right)
+      vim.keymap.set('n', '<C-\\>', require('smart-splits').move_cursor_previous)
+
+      vim.api.nvim_set_keymap('n', '<C-x>', ':split<CR>', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<C-v>', ':vsplit<CR>', { noremap = true, silent = true })
+
+      -- equilize splits on new pane terminal window resize
+      vim.api.nvim_create_autocmd('WinResized', {
+        group = vim.api.nvim_create_augroup('AutoResize', { clear = true }),
+        callback = function()
+          vim.cmd 'wincmd =' -- Equalize split sizes
+        end,
+      })
+    end,
+  },
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
   -- keys can be used to configure plugin behavior/loading/etc.
