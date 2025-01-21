@@ -31,4 +31,8 @@ _:
   "karabiner-elements"
 
   "aerospace"
+  "orbstack"
+
+  # TODO:
+  #   https://github.com/exelban/stats
 ]

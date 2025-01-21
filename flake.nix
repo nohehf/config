@@ -135,6 +135,7 @@
           };
           modules = [
             home-manager.darwinModules.home-manager
+            # THIS seems to break everything
             nix-homebrew.darwinModules.nix-homebrew
             {
               nix-homebrew = {
@@ -148,7 +149,6 @@
                   "nikitabobko/homebrew-tap" = nikitabobko-tap;
                 };
                 mutableTaps = true; # TODO: it seems that mutable tabs = true doesn't work; open issue
-                autoMigrate = true;
               };
             }
             ./darwin/host.nix

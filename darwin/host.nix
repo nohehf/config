@@ -56,13 +56,9 @@ in
     ++ (import ../packages.nix { inherit pkgs; });
 
   # fonts
-  fonts.packages = with pkgs; [
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "JetBrainsMono"
-      ];
-    })
+  fonts.packages = [
+    pkgs.nerd-fonts.fira-code
+    pkgs.nerd-fonts.jetbrains-mono
   ];
 
   # enable sudo touch id auth
@@ -122,13 +118,34 @@ in
           size-immutable = true;
         };
 
+        "com.apple.symbolichotkeys" = {
+          AppleSymbolicHotKeys =
+            let
+              disabled = [
+                60 # ctrl + space to cycle through keyboards
+                61 # ctrl + space to cycle through keyboards
+              ];
+            in
+            # Generate a map for each key
+            builtins.listToAttrs (
+              map (key: {
+                name = toString key;
+                value = {
+                  enabled = false;
+                };
+              }) disabled
+            );
+        };
+
         # custom iterm config
+        # TODO: remove this
         "com.googlecode.iterm2" = {
           PrefsCustomFolder = "${HOME}/config/config/iterm";
           LoadPrefsFromCustomFolder = true;
         };
 
         # custom keyboard layout
+        # TODO: Open pr for this too
         "com.apple.HIToolbox" = {
           AppleCurrentKeyboardLayoutInputSourceID = "com.apple.keyboardlayout.qwerty-fr.keylayout.qwerty-fr";
           AppleEnabledInputSources = [

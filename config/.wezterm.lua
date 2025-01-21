@@ -6,6 +6,8 @@
 -- overrides.font_size = 18.0
 -- window:set_config_overrides(overrides)
 
+local HYPER = "CMD|SHIFT|ALT"
+
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
@@ -43,38 +45,44 @@ config.use_fancy_tab_bar = false
 config.hyperlink_rules = wezterm.default_hyperlink_rules()
 
 config.keys = {
-	-- cmd + d to split horizontally
-	{ key = "d", mods = "CMD", action = act({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },
+	-- HYPER + h to split horizontally
+	{ key = "h",          mods = HYPER,       action = act({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },
 	-- cmd + shift + d to split vertically
-	{ key = "d", mods = "CMD|SHIFT", action = act({ SplitVertical = { domain = "CurrentPaneDomain" } }) },
+	{ key = "v",          mods = HYPER,       action = act({ SplitVertical = { domain = "CurrentPaneDomain" } }) },
 	-- close pane on cmd + w
-	{ key = "w", mods = "CMD", action = act({ CloseCurrentPane = { confirm = true } }) },
+	{ key = "w",          mods = "CMD",       action = act({ CloseCurrentPane = { confirm = true } }) },
 
 	-- rebind to iterm defaults
 	-- opt letft/right to move by word
-	{ mods = "OPT", key = "LeftArrow", action = act.SendKey({ mods = "ALT", key = "b" }) },
-	{ mods = "OPT", key = "RightArrow", action = act.SendKey({ mods = "ALT", key = "f" }) },
+	{ mods = "OPT",       key = "LeftArrow",  action = act.SendKey({ mods = "ALT", key = "b" }) },
+	{ mods = "OPT",       key = "RightArrow", action = act.SendKey({ mods = "ALT", key = "f" }) },
 	-- cmd left/right to move to start/end of line
-	{ mods = "CMD", key = "LeftArrow", action = act.SendKey({ mods = "CTRL", key = "a" }) },
-	{ mods = "CMD", key = "RightArrow", action = act.SendKey({ mods = "CTRL", key = "e" }) },
+	{ mods = "CMD",       key = "LeftArrow",  action = act.SendKey({ mods = "CTRL", key = "a" }) },
+	{ mods = "CMD",       key = "RightArrow", action = act.SendKey({ mods = "CTRL", key = "e" }) },
 	-- cmd backspace to delete to start of line
-	{ mods = "CMD", key = "Backspace", action = act.SendKey({ mods = "CTRL", key = "u" }) },
+	{ mods = "CMD",       key = "Backspace",  action = act.SendKey({ mods = "CTRL", key = "u" }) },
 
 	-- select pane with cmd + option + arrow
-	{ key = "RightArrow", mods = "CMD|OPT", action = wezterm.action({ ActivatePaneDirection = "Right" }) },
-	{ key = "LeftArrow", mods = "CMD|OPT", action = wezterm.action({ ActivatePaneDirection = "Left" }) },
-	{ key = "UpArrow", mods = "CMD|OPT", action = wezterm.action({ ActivatePaneDirection = "Up" }) },
-	{ key = "DownArrow", mods = "CMD|OPT", action = wezterm.action({ ActivatePaneDirection = "Down" }) },
+	{ key = "RightArrow", mods = "CMD|OPT",   action = wezterm.action({ ActivatePaneDirection = "Right" }) },
+	{ key = "LeftArrow",  mods = "CMD|OPT",   action = wezterm.action({ ActivatePaneDirection = "Left" }) },
+	{ key = "UpArrow",    mods = "CMD|OPT",   action = wezterm.action({ ActivatePaneDirection = "Up" }) },
+	{ key = "DownArrow",  mods = "CMD|OPT",   action = wezterm.action({ ActivatePaneDirection = "Down" }) },
 
 	-- select pane with vim arrows: hjkl
-	{ key = "l", mods = "CMD|OPT", action = wezterm.action({ ActivatePaneDirection = "Right" }) },
-	{ key = "h", mods = "CMD|OPT", action = wezterm.action({ ActivatePaneDirection = "Left" }) },
-	{ key = "k", mods = "CMD|OPT", action = wezterm.action({ ActivatePaneDirection = "Up" }) },
-	{ key = "j", mods = "CMD|OPT", action = wezterm.action({ ActivatePaneDirection = "Down" }) },
+	{ key = "l",          mods = "CMD|OPT",   action = wezterm.action({ ActivatePaneDirection = "Right" }) },
+	{ key = "h",          mods = "CMD|OPT",   action = wezterm.action({ ActivatePaneDirection = "Left" }) },
+	{ key = "k",          mods = "CMD|OPT",   action = wezterm.action({ ActivatePaneDirection = "Up" }) },
+	{ key = "j",          mods = "CMD|OPT",   action = wezterm.action({ ActivatePaneDirection = "Down" }) },
+
+	-- select pane with HYPER + vim arrows: hjkl
+	{ key = "l",          mods = HYPER,       action = wezterm.action({ ActivatePaneDirection = "Right" }) },
+	{ key = "h",          mods = HYPER,       action = wezterm.action({ ActivatePaneDirection = "Left" }) },
+	{ key = "k",          mods = HYPER,       action = wezterm.action({ ActivatePaneDirection = "Up" }) },
+	{ key = "j",          mods = HYPER,       action = wezterm.action({ ActivatePaneDirection = "Down" }) },
 
 	-- clipboard
-	{ key = "c", mods = "CMD", action = act.CopyTo("ClipboardAndPrimarySelection") },
-	{ key = "v", mods = "CMD", action = act.PasteFrom("Clipboard") },
+	{ key = "c",          mods = "CMD",       action = act.CopyTo("ClipboardAndPrimarySelection") },
+	{ key = "v",          mods = "CMD",       action = act.PasteFrom("Clipboard") },
 }
 
 -- ctrl + click or cmd + click to open link
@@ -109,6 +117,7 @@ config.mouse_bindings = {
 	},
 }
 
+-- dim inactive pane
 config.inactive_pane_hsb = {
 	saturation = 0.7,
 	brightness = 0.7,

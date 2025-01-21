@@ -10,13 +10,14 @@ with pkgs;
   btop
   git
   wget
+  gnupg
 
+  starship
   fzf
-  # atuin
-  helix
+  zsh-syntax-highlighting
+  zsh-autosuggestions
 
-  # Fonts
-  jetbrains-mono
+  helix
 
   # Language tools
   ## Nix
@@ -24,4 +25,23 @@ with pkgs;
   nixfmt-rfc-style # nixfmt
   nil
   nixd
+
+  ## lua
+  stylua
+
+  ## go
+  go
+  gopls
+
+  ## python
+  uv
+  python313
+  python313Packages.black
+  python313Packages.ruff
+
+  ## js / ts
+  volta
+
+  ## rust
+  rustup
 ]

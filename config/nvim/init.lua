@@ -297,6 +297,7 @@ require('lazy').setup({
 
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
+
       require('telescope').setup {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
@@ -324,12 +325,20 @@ require('lazy').setup({
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
+
+      -- Dynamically use git_files if in a git project, else find_files
+      -- See: https://github.com/LunarVim/LunarVim/pull/2089/files
+      local function find_project_files()
+        local ok = pcall(builtin.git_files)
+
+        if not ok then
+          builtin.find_files()
+        end
+      end
+
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-      vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-      vim.keymap.set('n', '<leader>sf', function()
-        builtin.find_files { hidden = false }
-      end, { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<leader>sf', find_project_files, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>saf', function()
         builtin.find_files { hidden = true }
       end, { desc = '[S]earch [A]ll [F]iles' })
@@ -534,6 +543,7 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       --        TODO: Add servers and other to separate file for easy access
+      --  NOTE: LSPs HERE
       local servers = {
         clangd = {},
         gopls = {},
@@ -634,15 +644,15 @@ require('lazy').setup({
           lsp_format = lsp_format_opt,
         }
       end,
+      -- NOTE: FORMATTERS HERE
       formatters_by_ft = {
         lua = { 'stylua' },
         nix = { 'nixfmt' },
         markdown = { 'markdownlint' },
         -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
+        python = { 'black' },
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        javascript = { 'prettierd', 'prettier', stop_after_first = true },
       },
     },
   },

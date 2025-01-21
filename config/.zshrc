@@ -4,10 +4,6 @@
 # Starship
 eval "$(starship init zsh)"
 
-# antidote
-source ~/.antidote/antidote.zsh
-antidote load
-
 # Load custom functions
 source $HOME/lib.sh
 
@@ -20,12 +16,6 @@ export GPG_TTY=$(tty)
 # custom ai lib
 export PATH="$HOME/code/ai/bin:$PATH"
 
-# Python 
-export PATH="$HOME/.pyenv/shims:$PATH"
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
 # k8s
 autoload -U +X compinit && compinit
 export KUBECONFIG="${KUBECONFIG}$(find $HOME/.kube/configs -type f -exec echo -n :{} \;)"
@@ -35,10 +25,6 @@ source <(kubectl completion zsh)
 
 # Docker 
 source <(docker completion zsh)
-
-# zsh stuff
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Atuin
 eval "$(atuin init zsh)"

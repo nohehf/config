@@ -31,7 +31,7 @@ in
     casks = pkgs.callPackage ./casks.nix { };
 
     # TODO: enable cleanup once migration ready
-    # onActivation.cleanup = "zap";
+    onActivation.cleanup = "uninstall";
   };
 
   # Enable home-manager
