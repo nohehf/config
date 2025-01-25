@@ -183,8 +183,16 @@ shift-down = ['volume set 0', 'mode main']
 
 
 # Per app config
+# id can be found with 
+# osascript -e 'id of app "Application Name"'
 # Bitwarden should  be floating
 [[on-window-detected]]
 if.app-id = 'com.bitwarden.desktop'
+check-further-callbacks = true
+run = 'layout floating'
+
+# OrbStack should  be floating
+[[on-window-detected]]
+if.app-id = 'dev.kdrag0n.MacVirt'
 check-further-callbacks = true
 run = 'layout floating'

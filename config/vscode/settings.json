@@ -93,5 +93,9 @@
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "hexeditor.columnWidth": 16,
+  "hexeditor.showDecodedText": true,
+  "hexeditor.defaultEndianness": "little",
+  "hexeditor.inspectorType": "aside"
 }

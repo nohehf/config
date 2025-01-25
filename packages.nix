@@ -44,4 +44,7 @@ with pkgs;
 
   ## rust
   rustup
+
+  ## github cli, convinent to create repos
+  gh
 ]
