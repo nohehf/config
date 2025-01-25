@@ -32,7 +32,7 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # TODO: use it 
+    # TODO: use it
     # nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
@@ -54,11 +54,9 @@
       email = "nohe.hinniger.foray@gmail.com";
       linuxSystems = [
         "x86_64-linux"
-        "aarch64-linux"
       ];
       darwinSystems = [
         "aarch64-darwin"
-        "x86_64-darwin"
       ];
       forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
       devShell =
@@ -159,6 +157,26 @@
       nixosConfigurations = nixpkgs.lib.genAttrs linuxSystems (
         system:
         nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = inputs;
+          modules = [
+            disko.nixosModules.disko
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.${user} = import ./nixos/home.nix;
+              };
+            }
+            ./nixos/host.nix
+          ];
+        }
+      );
+
+      homeConfigurations = nixpkgs.lib.genAttrs linuxSystems (
+        system:
+        nixpkgs.lib.${system} {
           inherit system;
           specialArgs = inputs;
           modules = [

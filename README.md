@@ -8,6 +8,21 @@ packages.nix -> declarative list of packages to install from nixpkgs
 programs.nix -> declarative configuration of packages (home-manager global programs definition)
 ./config -> contains nix files and dotfiles for configurating programs
 
+## Install
+
+### Macos / Darwin
+
+to document
+
+### Linux headless (non nixos)
+
+```bash
+cd ~
+git clone https://nohehf.com/config
+cd config
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+```
+
 ## run
 
 /!\ make shure to git add before running
