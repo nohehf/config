@@ -1,9 +1,12 @@
 {
-  description = "Shared Configuration for MacOS and NixOS, based on https://github.com/dustinlyons/nixos-config";
+  description = "Shared Configuration for MacOS and NixOS, initially based on https://github.com/dustinlyons/nixos-config";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     darwin = {
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -52,12 +55,8 @@
     let
       user = "nohehf";
       email = "nohe.hinniger.foray@gmail.com";
-      linuxSystems = [
-        "x86_64-linux"
-      ];
-      darwinSystems = [
-        "aarch64-darwin"
-      ];
+      linuxSystems = [ "x86_64-linux" ];
+      darwinSystems = [ "aarch64-darwin" ];
       forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
       devShell =
         system:
@@ -88,7 +87,8 @@
           '')
         }/bin/${scriptName}";
       };
-      mkLinuxApps = system: {
+      # TODO: remove all this crap
+      mkNixOSApps = system: {
         "apply" = mkApp "apply" system;
         "build-switch" = mkApp "build-switch" system;
         "copy-keys" = mkApp "copy-keys" system;
@@ -105,6 +105,7 @@
         "check-keys" = mkApp "check-keys" system;
         "rollback" = mkApp "rollback" system;
       };
+      mkLinuxApps = system: { };
     in
     {
       nixpkgs = {
@@ -120,8 +121,9 @@
 
       devShells = forAllSystems devShell;
       apps =
-        nixpkgs.lib.genAttrs linuxSystems mkLinuxApps
-        // nixpkgs.lib.genAttrs darwinSystems mkDarwinApps;
+        nixpkgs.lib.genAttrs linuxSystems mkNixOSApps
+        // nixpkgs.lib.genAttrs darwinSystems mkDarwinApps
+        // nixpkgs.lib.genAttrs darwinSystems mkLinuxApps;
 
       darwinConfigurations = nixpkgs.lib.genAttrs darwinSystems (
         system:
@@ -129,7 +131,11 @@
           inherit system;
           # specialArgs = inputs;
           specialArgs = {
-            inherit user email inputs; # Pass user, email, and inputs to the module
+            inherit
+              user
+              email
+              inputs
+              ; # Pass user, email, and inputs to the module
           };
           modules = [
             home-manager.darwinModules.home-manager
@@ -174,24 +180,28 @@
         }
       );
 
-      homeConfigurations = nixpkgs.lib.genAttrs linuxSystems (
-        system:
-        nixpkgs.lib.${system} {
-          inherit system;
-          specialArgs = inputs;
-          modules = [
-            disko.nixosModules.disko
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.${user} = import ./nixos/home.nix;
-              };
-            }
-            ./nixos/host.nix
-          ];
-        }
-      );
+      # non nix OS linux home manager
+      homeConfigurations =
+        let
+          lib = nixpkgs.lib;
+          system = "x86_64-linux";
+          pkgs = import nixpkgs { inherit system; };
+        in
+        {
+          ${system} = home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+            modules = [ ./linux/home.nix ];
+            extraSpecialArgs = {
+              inherit inputs user email;
+              # todo: support both headless and headfull
+              headless = true;
+            };
+          };
+          # ${system}_headfull = home-manager.lib.homeManagerConfiguration {
+          #   inherit pkgs;
+          #   modules = [ ./linux/home.nix ];
+          #   extraSpecialArgs = { inherit inputs user email; };
+          # };
+        };
     };
 }

@@ -6,5 +6,6 @@ let
 in
 shared-packages
 ++ [
-  # Add host specific packages here
+  docker
+  kubectl
 ]

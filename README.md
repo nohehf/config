@@ -17,11 +17,19 @@ to document
 ### Linux headless (non nixos)
 
 ```bash
+# create nohehf user if not done, as a sudoer
+sudo adduser nohehf sudo
+su nohehf
+# 
 cd ~
 git clone https://nohehf.com/config
-cd config
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+chmod +x config/bin/x86_64-linux/install
+./config/bin/x86_64-linux/install
 ```
+
+Ressources:
+- https://discourse.nixos.org/t/a-practical-kickstart-to-home-manager/40180
+
 
 ## run
 

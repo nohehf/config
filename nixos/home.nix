@@ -97,7 +97,9 @@ in
           font = "Noto Sans";
           line_height = 4;
           markup = "full";
-          format = "<b>%s</b>\n%b";
+          format = ''
+            <b>%s</b>
+            %b'';
           alignment = "left";
           transparency = 10;
           show_age_threshold = 60;

@@ -51,7 +51,7 @@ in
           [
             " "
             "!"
-            "\""
+            ''"''
             "#"
             "$"
             "%"
@@ -74,11 +74,12 @@ in
           ]
           (normalize path)
         );
-      wantURIs = concatMapStrings (entry: "${entryURI entry.path}\n") cfg.entries;
-      createEntries = concatMapStrings (
-        entry:
-        "${dockutil}/bin/dockutil --no-restart --add '${entry.path}' --section ${entry.section} ${entry.options}\n"
-      ) cfg.entries;
+      wantURIs = concatMapStrings (entry: ''
+        ${entryURI entry.path}
+      '') cfg.entries;
+      createEntries = concatMapStrings (entry: ''
+        ${dockutil}/bin/dockutil --no-restart --add '${entry.path}' --section ${entry.section} ${entry.options}
+      '') cfg.entries;
     in
     {
       system.activationScripts.postUserActivation.text = ''
