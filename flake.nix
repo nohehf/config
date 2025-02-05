@@ -107,12 +107,12 @@
           pkgs = import nixpkgs { inherit system; };
         in
         {
-          "${system}_headless" = home-manager.lib.homeManagerConfiguration {
+          "${system}" = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
             modules = [ ./linux/home.nix ];
             extraSpecialArgs = {
               inherit inputs user email;
-              headless = true;
+              headless = builtins.getEnv "DISPLAY" == "";
             };
           };
           # headfull should be added here when necessary (to enable GUI apps)
