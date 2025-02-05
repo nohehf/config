@@ -7,12 +7,10 @@
 
 let
   HOME = config.users.users.${user}.home;
-in
 
+in
 {
-  imports = [
-    ./home.nix
-  ];
+  imports = [ ./home.nix ];
 
   services.nix-daemon.enable = true;
 
@@ -49,11 +47,7 @@ in
   system.checks.verifyNixPath = false;
 
   # mac-os specifig packages
-  environment.systemPackages =
-    with pkgs;
-    [
-    ]
-    ++ (import ../packages.nix { inherit pkgs; });
+  environment.systemPackages = with pkgs; [ ] ++ (import ../packages.nix { inherit pkgs; });
 
   # fonts
   fonts.packages = [
@@ -135,13 +129,6 @@ in
                 };
               }) disabled
             );
-        };
-
-        # custom iterm config
-        # TODO: remove this
-        "com.googlecode.iterm2" = {
-          PrefsCustomFolder = "${HOME}/config/config/iterm";
-          LoadPrefsFromCustomFolder = true;
         };
 
         # custom keyboard layout

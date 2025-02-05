@@ -8,7 +8,9 @@ eval "$(starship init zsh)"
 source $HOME/lib.sh
 
 # Load .env file in secrets
-exsource $HOME/.secrets/.env
+if [[ -f $HOME/.secrets/.env ]]; then
+  exsource $HOME/.secrets/.env
+fi
 
 # To fix a gpg issue: https://github.com/keybase/keybase-issues/issues/2798
 export GPG_TTY=$(tty)
@@ -18,8 +20,10 @@ export PATH="$HOME/code/ai/bin:$PATH"
 
 # k8s
 autoload -U +X compinit && compinit
-export KUBECONFIG="${KUBECONFIG}$(find $HOME/.kube/configs -type f -exec echo -n :{} \;)"
-export KUBECONFIG="${KUBECONFIG}:$HOME/.kube/config"
+if [[ -d $HOME/.kube/configs ]]; then
+  export KUBECONFIG="${KUBECONFIG}$(find $HOME/.kube/configs -type f -exec echo -n :{} \;)"
+  export KUBECONFIG="${KUBECONFIG}:$HOME/.kube/config"
+fi
 alias k=kubectl
 source <(kubectl completion zsh)
 
@@ -27,7 +31,9 @@ source <(kubectl completion zsh)
 source <(docker completion zsh)
 
 # Atuin
-eval "$(atuin init zsh)"
+if command -v atuin &> /dev/null; then 
+  eval "$(atuin init zsh)"
+fi
 
 # Lib postgres (to remove if installing the full postgres)
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"

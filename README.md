@@ -8,6 +8,29 @@ packages.nix -> declarative list of packages to install from nixpkgs
 programs.nix -> declarative configuration of packages (home-manager global programs definition)
 ./config -> contains nix files and dotfiles for configurating programs
 
+## Install
+
+### Macos / Darwin
+
+to document
+
+### Linux headless (non nixos)
+
+```bash
+# create nohehf user if not done, as a sudoer
+sudo adduser nohehf sudo
+su nohehf
+# 
+cd ~
+git clone https://nohehf.com/config
+chmod +x config/bin/x86_64-linux/install
+./config/bin/x86_64-linux/install
+```
+
+Ressources:
+- https://discourse.nixos.org/t/a-practical-kickstart-to-home-manager/40180
+
+
 ## run
 
 /!\ make shure to git add before running

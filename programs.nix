@@ -4,6 +4,7 @@
   lib,
   user,
   email,
+  headless ? false,
   ...
 }:
 
@@ -11,18 +12,8 @@ let
   name = user;
 in
 {
-  vim = import ./config/vim.nix {
-    inherit
-      config
-      pkgs
-      lib
-      name
-      email
-      ;
-  };
-
   wezterm = {
-    enable = true;
+    enable = !headless; # only install on headfull hosts
     enableZshIntegration = true;
     enableBashIntegration = true;
     extraConfig = builtins.readFile ./config/.wezterm.lua;
@@ -30,7 +21,8 @@ in
 
   # Atuin managed by home-manager
   atuin = {
-    enable = true;
+    # disable for now on headless, see: https://github.com/atuinsh/atuin/issues/2438
+    enable = !headless;
     settings = {
       style = "compact";
       inline_height = 40;

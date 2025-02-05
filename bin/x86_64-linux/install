@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+RED='\033[1;31m'
+NC='\033[0m'
+
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+nix-channel --update
+
+echo -e "${GREEN}Installing home manager...${NC}"
+nix-shell '<home-manager>' -A install
+
+echo "Using home-manager version: $(home-manager --version)"
+
+# maybe this can be removed
+# add to .zshrc if exists else .bashrc
+RC_OK = false
+if [[ -f $HOME/.bashrc && $__HM_SESS_VARS_SOURCED != 1  ]]; then
+    echo "source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" >> $HOME/.bashrc
+    RC_OK = true
+fi
+if [[ -f $HOME/.zshrc && $__HM_SESS_VARS_SOURCED != 1 ]]; then
+    echo "source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" >> $HOME/.zshrc
+    RC_OK = false
+fi
+
+
+if [[$__HM_SESS_VARS_SOURCED != 1 && ! RC_OK ]] ; then
+    echo -e "${RED}It seems like you are not using bash nor zsh, aborting.${NC}"
+    exit 1
+fi
+
+echo -e "Activating switch via 'just'..."
+just
+
+echo -e "${GREEN}Installation complete ! You can now `just` use the `just` command to switch !${NC}"
+# tbc
+# https://github.com/Evertras/simple-homemanager/blob/main/02-basic-repository-setup.md
+# https://discourse.nixos.org/t/one-single-configuration-for-multiple-architectures/29879/4
+# https://github.com/Baitinq/nixos-config/blob/master/flake.nix

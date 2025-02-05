@@ -7,5 +7,6 @@ let
   mksym = config.lib.file.mkOutOfStoreSymlink;
 in
 {
-  # TODO: mac os only files
+  "${HOME}/.config/karabiner".source = mksym "${CONFIG}/karabiner";
+  "${HOME}/.config/aerospace".source = mksym "${CONFIG}/aerospace";
 }

@@ -11,17 +11,17 @@ with pkgs;
   git
   wget
   gnupg
-
+  just
+  ## github cli, convinent to create repos
+  gh
   starship
   fzf
   zsh-syntax-highlighting
   zsh-autosuggestions
-
   helix
 
   # Language tools
   ## Nix
-  nixpkgs-fmt
   nixfmt-rfc-style # nixfmt
   nil
   nixd
@@ -45,6 +45,4 @@ with pkgs;
   ## rust
   rustup
 
-  ## github cli, convinent to create repos
-  gh
 ]
