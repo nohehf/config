@@ -131,13 +131,6 @@ in
             );
         };
 
-        # custom iterm config
-        # TODO: remove this
-        "com.googlecode.iterm2" = {
-          PrefsCustomFolder = "${HOME}/config/config/iterm";
-          LoadPrefsFromCustomFolder = true;
-        };
-
         # custom keyboard layout
         # TODO: Open pr for this too
         "com.apple.HIToolbox" = {

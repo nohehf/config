@@ -26,14 +26,9 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-    # Needed for aerospace; TODO: simplify adding taps
     nikitabobko-tap = {
       url = "github:nikitabobko/homebrew-tap";
       flake = false;
-    };
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     # TODO: use it
     # nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
@@ -50,32 +45,10 @@
       nikitabobko-tap,
       home-manager,
       nixpkgs,
-      disko,
     }@inputs:
     let
       user = "nohehf";
       email = "nohe.hinniger.foray@gmail.com";
-      linuxSystems = [ "x86_64-linux" ];
-      darwinSystems = [ "aarch64-darwin" ];
-      forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
-      devShell =
-        system:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-        in
-        {
-          default =
-            with pkgs;
-            mkShell {
-              nativeBuildInputs = with pkgs; [
-                bashInteractive
-                git
-              ];
-              shellHook = with pkgs; ''
-                export EDITOR=vim
-              '';
-            };
-        };
       mkApp = scriptName: system: {
         type = "app";
         program = "${
@@ -87,25 +60,11 @@
           '')
         }/bin/${scriptName}";
       };
-      # TODO: remove all this crap
-      mkNixOSApps = system: {
-        "apply" = mkApp "apply" system;
-        "build-switch" = mkApp "build-switch" system;
-        "copy-keys" = mkApp "copy-keys" system;
-        "create-keys" = mkApp "create-keys" system;
-        "check-keys" = mkApp "check-keys" system;
-        "install" = mkApp "install" system;
-      };
-      mkDarwinApps = system: {
-        "apply" = mkApp "apply" system;
+      mkApps = system: {
         "build" = mkApp "build" system;
-        "build-switch" = mkApp "build-switch" system;
-        "copy-keys" = mkApp "copy-keys" system;
-        "create-keys" = mkApp "create-keys" system;
-        "check-keys" = mkApp "check-keys" system;
+        "switch" = mkApp "switch" system;
         "rollback" = mkApp "rollback" system;
       };
-      mkLinuxApps = system: { };
     in
     {
       nixpkgs = {
@@ -117,91 +76,62 @@
         };
       };
 
-      # TODO: Overlays
+      apps = import ./apps.nix { inherit nixpkgs self; };
 
-      devShells = forAllSystems devShell;
-      apps =
-        nixpkgs.lib.genAttrs linuxSystems mkNixOSApps
-        // nixpkgs.lib.genAttrs darwinSystems mkDarwinApps
-        // nixpkgs.lib.genAttrs darwinSystems mkLinuxApps;
-
-      darwinConfigurations = nixpkgs.lib.genAttrs darwinSystems (
-        system:
-        darwin.lib.darwinSystem {
-          inherit system;
-          # specialArgs = inputs;
-          specialArgs = {
-            inherit
-              user
-              email
-              inputs
-              ; # Pass user, email, and inputs to the module
-          };
-          modules = [
-            home-manager.darwinModules.home-manager
-            # THIS seems to break everything
-            nix-homebrew.darwinModules.nix-homebrew
-            {
-              nix-homebrew = {
-                user = "nohehf";
-                enable = true;
-                enableRosetta = true;
-                taps = {
-                  "homebrew/homebrew-core" = homebrew-core;
-                  "homebrew/homebrew-cask" = homebrew-cask;
-                  "homebrew/homebrew-bundle" = homebrew-bundle;
-                  "nikitabobko/homebrew-tap" = nikitabobko-tap;
+      # ARM OSX
+      # TODO: move this out of the flake root
+      darwinConfigurations =
+        let
+          system = "aarch64-darwin";
+        in
+        {
+          ${system} = darwin.lib.darwinSystem {
+            inherit system;
+            specialArgs = {
+              inherit
+                user
+                email
+                inputs
+                ; # Pass user, email, and inputs to the module
+            };
+            modules = [
+              home-manager.darwinModules.home-manager
+              nix-homebrew.darwinModules.nix-homebrew
+              {
+                nix-homebrew = {
+                  inherit user;
+                  enable = true;
+                  enableRosetta = true;
+                  taps = {
+                    "homebrew/homebrew-core" = homebrew-core;
+                    "homebrew/homebrew-cask" = homebrew-cask;
+                    "homebrew/homebrew-bundle" = homebrew-bundle;
+                    "nikitabobko/homebrew-tap" = nikitabobko-tap;
+                  };
+                  mutableTaps = true; # TODO: it seems that mutable tabs = true doesn't work; open issue
                 };
-                mutableTaps = true; # TODO: it seems that mutable tabs = true doesn't work; open issue
-              };
-            }
-            ./darwin/host.nix
-          ];
-        }
-      );
-
-      nixosConfigurations = nixpkgs.lib.genAttrs linuxSystems (
-        system:
-        nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = inputs;
-          modules = [
-            disko.nixosModules.disko
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.${user} = import ./nixos/home.nix;
-              };
-            }
-            ./nixos/host.nix
-          ];
-        }
-      );
+              }
+              ./darwin/host.nix
+            ];
+          };
+        };
 
       # non nix OS linux home manager
       homeConfigurations =
         let
-          lib = nixpkgs.lib;
           system = "x86_64-linux";
           pkgs = import nixpkgs { inherit system; };
         in
         {
-          ${system} = home-manager.lib.homeManagerConfiguration {
+          "${system}_headless" = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
             modules = [ ./linux/home.nix ];
             extraSpecialArgs = {
               inherit inputs user email;
-              # todo: support both headless and headfull
               headless = true;
             };
           };
-          # ${system}_headfull = home-manager.lib.homeManagerConfiguration {
-          #   inherit pkgs;
-          #   modules = [ ./linux/home.nix ];
-          #   extraSpecialArgs = { inherit inputs user email; };
-          # };
+          # headfull should be added here when necessary (to enable GUI apps)
         };
     };
 }
