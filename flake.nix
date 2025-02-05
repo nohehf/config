@@ -49,22 +49,6 @@
     let
       user = "nohehf";
       email = "nohe.hinniger.foray@gmail.com";
-      mkApp = scriptName: system: {
-        type = "app";
-        program = "${
-          (nixpkgs.legacyPackages.${system}.writeScriptBin scriptName ''
-            #!/usr/bin/env bash
-            PATH=${nixpkgs.legacyPackages.${system}.git}/bin:$PATH
-            echo "Running ${scriptName} for ${system}"
-            exec ${self}/bin/${system}/${scriptName}
-          '')
-        }/bin/${scriptName}";
-      };
-      mkApps = system: {
-        "build" = mkApp "build" system;
-        "switch" = mkApp "switch" system;
-        "rollback" = mkApp "rollback" system;
-      };
     in
     {
       nixpkgs = {
