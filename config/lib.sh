@@ -128,6 +128,7 @@ gac() {
 }
 
 # Press enter to keep the generated commit message, exit or control+c to abort or write your own commit message
+# TODO: pass this in a full go CLI
 wrap_generate_commit_message() {
     # Start spinner
     echo -n "Generating commit message... " >&2

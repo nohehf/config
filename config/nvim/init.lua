@@ -429,7 +429,15 @@ require('lazy').setup({
       'nvim-tree/nvim-web-devicons',
     },
     config = function()
-      require('nvim-tree').setup {}
+      require('nvim-tree').setup {
+        update_focused_file = {
+          enable = true,
+        },
+      }
+
+      local nvim_tree_api = require 'nvim-tree.api'
+      -- Close / open file explorer (nvim tree)
+      vim.keymap.set('n', '<leader>e', nvim_tree_api.tree.toggle, { desc = 'Toggle [E]xplorer' })
     end,
   },
   { 'Bilal2453/luvit-meta', lazy = true },
