@@ -12,6 +12,8 @@ with pkgs;
   wget
   gnupg
   just
+  jq
+  tree
   ## github cli, convinent to create repos
   gh
   starship
