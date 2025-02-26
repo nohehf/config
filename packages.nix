@@ -21,7 +21,7 @@ with pkgs;
   zsh-syntax-highlighting
   zsh-autosuggestions
   helix
-
+  fastfetch
   # Language tools
   ## Nix
   nixfmt-rfc-style # nixfmt
