@@ -51,6 +51,11 @@ in
 
     # Source the existing ~/.zshrc dynamically
     initExtra = ''
+      if [[ "$(uname -m)" == "arm64" ]]; then
+            # Make sure brew is in env on arm
+            eval "$(/opt/homebrew/bin/brew shellenv)"
+      fi
+
       if [ -f "$HOME/.zshrc" ]; then
         source "$HOME/.zshrc"
       fi

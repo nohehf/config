@@ -92,7 +92,8 @@
                     "homebrew/homebrew-bundle" = homebrew-bundle;
                     "nikitabobko/homebrew-tap" = nikitabobko-tap;
                   };
-                  mutableTaps = true; # TODO: it seems that mutable tabs = true doesn't work; open issue
+
+                  mutableTaps = true;
                 };
               }
               ./darwin/host.nix

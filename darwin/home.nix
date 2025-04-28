@@ -23,13 +23,19 @@ in
 
   homebrew = {
     enable = true;
+
+    onActivation = {
+      autoUpdate = true;
+      upgrade = true;
+      # TODO: enable cleanup once migration ready
+      cleanup = "uninstall";
+    };
+
     taps = [
       "nikitabobko/tap" # for aerospace
+      "homebrew/homebrew-cask" # seems to be needed as https://github.com/zhaofengli/nix-homebrew is broken as hell
     ];
     casks = pkgs.callPackage ./casks.nix { };
-
-    # TODO: enable cleanup once migration ready
-    # onActivation.cleanup = "uninstall";
   };
 
   # Enable home-manager
