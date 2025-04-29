@@ -21,3 +21,4 @@
 	helper = store
 [core]
 	hooksPath = /dev/null
+	editor = "nvim"

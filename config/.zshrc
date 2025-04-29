@@ -7,6 +7,8 @@ eval "$(starship init zsh)"
 # Load custom functions
 source $HOME/lib.sh
 
+export EDITOR="nvim"
+
 # Load .env file in secrets
 if [[ -f $HOME/.secrets/.env ]]; then
   exsource $HOME/.secrets/.env
