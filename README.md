@@ -28,8 +28,8 @@ chmod +x config/bin/x86_64-linux/install
 ```
 
 Ressources:
-- https://discourse.nixos.org/t/a-practical-kickstart-to-home-manager/40180
 
+- <https://discourse.nixos.org/t/a-practical-kickstart-to-home-manager/40180>
 
 ## run
 
@@ -39,7 +39,10 @@ just test the build:
 `nix run .#build`
 
 apply the new switch
-`rix run .#build-switch`
+`nix run .#switch`
+
+update flake:
+`nix flake update`
 
 ## acknoledgments
 

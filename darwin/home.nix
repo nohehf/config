@@ -80,9 +80,10 @@ in
   local.dock.entries = [
     { path = "/Applications/Google Chrome.app"; }
     { path = "/Applications/WezTerm.app"; }
-    { path = "/Applications/Visual Studio Code.app"; }
+    { path = "/Applications/Cursor.app"; }
     { path = "/Applications/Bitwarden.app"; }
     { path = "/Applications/Notion.app"; }
+    { path = "/Applications/Discord.app"; }
   ];
 
 }

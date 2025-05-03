@@ -13,8 +13,6 @@ in
 {
   imports = [ ./home.nix ];
 
-  services.nix-daemon.enable = true;
-
   nix = {
     package = pkgs.nix;
     settings = {
@@ -30,7 +28,6 @@ in
     };
 
     gc = {
-      user = "root";
       automatic = true;
       interval = {
         Weekday = 0;
@@ -57,7 +54,7 @@ in
   ];
 
   # enable sudo touch id auth
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   system = {
     stateVersion = 4;
