@@ -58,9 +58,9 @@ function mkcd() {
   mkdir -p $@ && cd ${@:$#}
 }
 
-# Vscode c command, opens vscode in the current directory if no argument is given else opens vscode in the given directory
+# cursor c command, opens cursor in the current directory if no argument is given else opens cursor in the given directory
 function c() {
-  code ${1:-.}
+  cursor ${1:-.}
 }
 
 function v() {
