@@ -11,27 +11,6 @@
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-homebrew = {
-      url = "github:zhaofengli-wip/nix-homebrew";
-    };
-    homebrew-bundle = {
-      url = "github:homebrew/homebrew-bundle";
-      flake = false;
-    };
-    homebrew-core = {
-      url = "github:homebrew/homebrew-core";
-      flake = false;
-    };
-    homebrew-cask = {
-      url = "github:homebrew/homebrew-cask";
-      flake = false;
-    };
-    nikitabobko-tap = {
-      url = "github:nikitabobko/homebrew-tap";
-      flake = false;
-    };
-    # TODO: use it
-    # nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
   outputs =
@@ -42,7 +21,6 @@
       homebrew-bundle,
       homebrew-core,
       homebrew-cask,
-      nikitabobko-tap,
       home-manager,
       nixpkgs,
     }@inputs:
@@ -80,22 +58,6 @@
             };
             modules = [
               home-manager.darwinModules.home-manager
-              nix-homebrew.darwinModules.nix-homebrew
-              {
-                nix-homebrew = {
-                  inherit user;
-                  enable = true;
-                  enableRosetta = true;
-                  taps = {
-                    "homebrew/homebrew-core" = homebrew-core;
-                    "homebrew/homebrew-cask" = homebrew-cask;
-                    "homebrew/homebrew-bundle" = homebrew-bundle;
-                    "nikitabobko/homebrew-tap" = nikitabobko-tap;
-                  };
-
-                  mutableTaps = true;
-                };
-              }
               ./darwin/host.nix
             ];
           };
