@@ -6,3 +6,4 @@ RED='\033[1;31m'
 NC='\033[0m'
 
 echo -e "${RED} Installation script not yet done for darwin system ${NC}"
+# TODO: install brew, nix and nix darwin then run the switch
