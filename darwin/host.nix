@@ -7,7 +7,8 @@
 
 let
   HOME = config.users.users.${user}.home;
-
+  # custom cursor derivation
+  cursor = pkgs.callPackage ./cursor.nix { };
 in
 {
   imports = [ ./home.nix ];
@@ -47,7 +48,7 @@ in
   system.checks.verifyNixPath = false;
 
   # mac-os specifig packages
-  environment.systemPackages = with pkgs; [ ] ++ (import ../packages.nix { inherit pkgs; });
+  environment.systemPackages = [ cursor ] ++ (import ../packages.nix { inherit pkgs; });
 
   # fonts
   fonts.packages = [
