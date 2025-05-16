@@ -60,7 +60,8 @@ function mkcd() {
 
 # cursor c command, opens cursor in the current directory if no argument is given else opens cursor in the given directory
 function c() {
-  cursor ${1:-.}
+  nohup cursor "${1:-.}" >/dev/null 2>&1 &
+  disown
 }
 
 function v() {
