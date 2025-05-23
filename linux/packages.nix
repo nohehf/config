@@ -1,8 +1,11 @@
-{ pkgs }:
+{
+  pkgs,
+  headless ? false,
+}:
 
 with pkgs;
 let
-  shared-packages = import ../packages.nix { inherit pkgs; };
+  shared-packages = import ../packages.nix { inherit pkgs headless; };
 in
 shared-packages
 ++ [

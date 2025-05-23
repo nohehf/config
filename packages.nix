@@ -1,4 +1,7 @@
-{ pkgs }:
+{
+  pkgs,
+  headless ? false,
+}:
 
 with pkgs;
 [
@@ -48,3 +51,14 @@ with pkgs;
   rustup
 
 ]
+++ (
+  if !headless then
+    [
+      # headfull only
+      obsidian
+    ]
+  else
+    [
+      # headless only
+    ]
+)

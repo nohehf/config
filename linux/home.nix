@@ -30,7 +30,7 @@ in
     username = user;
     homeDirectory = "/home/${user}";
 
-    packages = pkgs.callPackage ./packages.nix { };
+    packages = pkgs.callPackage ./packages.nix { inherit headless; };
 
     file = { } // shared-files;
 
@@ -41,7 +41,7 @@ in
         ZSH_PATH="/home/${user}/.nix-profile/bin/zsh"
         if [[ $(getent passwd ${user}) != *"$ZSH_PATH" ]]; then
           echo "setting zsh as default shell (using chsh). password might be necessay."
-          if grep -q $ZSH_PATH /etc/shells; then
+          if grep -vq $ZSH_PATH /etc/shells; then
             echo "adding zsh to /etc/shells"
             run echo "$ZSH_PATH" | sudo tee -a /etc/shells
           fi

@@ -48,7 +48,11 @@ in
   system.checks.verifyNixPath = false;
 
   # mac-os specifig packages
-  environment.systemPackages = (import ../packages.nix { inherit pkgs; });
+  environment.systemPackages = (
+    import ../packages.nix {
+      inherit pkgs;
+    }
+  );
 
   # fonts
   fonts.packages = [

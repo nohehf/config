@@ -80,6 +80,9 @@ function v() {
   fi
 }
 
+# just alias to j
+alias j=just
+
 # opam configuration
 [[ ! -r /Users/nohehf/.opam/opam-init/init.zsh ]] || source /Users/nohehf/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
