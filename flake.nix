@@ -41,10 +41,11 @@
       darwinConfigurations =
         let
           system = "aarch64-darwin";
+          pkgs = import nixpkgs { inherit system; overlays = import ./darwin/overlays; config = { allowUnfree = true; }; };
         in
         {
           ${system} = darwin.lib.darwinSystem {
-            inherit system;
+            inherit system pkgs;
             specialArgs = {
               inherit
                 user
@@ -63,7 +64,7 @@
       homeConfigurations =
         let
           system = "x86_64-linux";
-          pkgs = import nixpkgs { inherit system; };
+          pkgs = import nixpkgs { inherit system; config = { allowUnfree = true; }; };
         in
         {
           "${system}" = home-manager.lib.homeManagerConfiguration {
