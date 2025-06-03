@@ -362,8 +362,10 @@ require('lazy').setup({
       local function find_project_files()
         local ok = pcall(builtin.git_files)
 
-        if not ok then
+        if ok then
           builtin.find_files()
+        else
+          builtin.git_files()
         end
       end
 

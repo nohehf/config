@@ -11,6 +11,8 @@ in
 {
   imports = [ ./home.nix ];
 
+  system.primaryUser = "nohehf";
+
   nixpkgs.config = {
     allowBroken = true;
     allowUnfree = true;
