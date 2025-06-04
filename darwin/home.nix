@@ -69,16 +69,6 @@ in
             ;
         };
 
-        # TODO: fix this
-        # Enables auto expire to garbage collect old generations
-        # https://nix-community.github.io/home-manager/options.xhtml#opt-services.home-manager.autoExpire.enable
-        # autoExpire = {
-        #   enable = true;
-        #   cleanup = true;
-        #   fequency = "daily";
-        #   timestamp = "-30 days";
-        # };
-
         # Marked broken Oct 20, 2022 check later to remove this
         # https://github.com/nix-community/home-manager/issues/3344
         manual.manpages.enable = false;
@@ -96,4 +86,15 @@ in
     { path = "/Applications/Discord.app"; }
   ];
 
+  nix = {
+    gc = {
+      automatic = true;
+      interval = {
+        Weekday = 0;
+        Hour = 2;
+        Minute = 0;
+      };
+      options = "--delete-older-than 30d";
+    };
+  };
 }

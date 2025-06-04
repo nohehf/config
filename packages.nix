@@ -5,6 +5,9 @@
 
 with pkgs;
 [
+  # Docker management
+  colima
+  lazydocker
   # General tools
   fastfetch
   neovim
