@@ -16,16 +16,17 @@ let
 in
 final: prev: {
   code-cursor = prev.code-cursor.overrideAttrs (oldAttrs: {
-    buildInputs = (oldAttrs.buildInputs or []) ++ [ final.jq ];
+    buildInputs = (oldAttrs.buildInputs or [ ]) ++ [ final.jq ];
     postInstall = ''
-        ${oldAttrs.postInstall or ""}
-        product_json="$out/Applications/Cursor.app/Contents/Resources/app/product.json"
-        echo "Patching $product_json"
-        if [ -f "$product_json" ]; then
-         tmp_json=$(mktemp)
-         jq --argjson extGallery '${extensionsGalleryJson}' '.extensionsGallery = $extGallery' "$product_json" > "$tmp_json"
-         mv "$tmp_json" "$product_json"
-        fi
-      '';
+      ${oldAttrs.postInstall or ""}
+      product_json="$out/Applications/Cursor.app/Contents/Resources/app/product.json"
+      echo "Patching $product_json"
+      if [ -f "$product_json" ]; then
+       tmp_json=$(mktemp)
+      # Change the extensionsGallery and remove .extensionMaxVersions
+       jq --argjson extGallery '${extensionsGalleryJson}' '.extensionsGallery = $extGallery | del(.extensionMaxVersions)' "$product_json" > "$tmp_json"
+       mv "$tmp_json" "$product_json"
+      fi
+    '';
   });
 }
