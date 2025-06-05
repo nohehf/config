@@ -53,6 +53,8 @@ with pkgs;
   ## rust
   rustup
 
+  awscli2
+  k9s
 ]
 ++ (
   if !headless then
