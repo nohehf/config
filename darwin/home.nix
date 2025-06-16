@@ -33,7 +33,6 @@ in
 
     taps = [
       "nikitabobko/tap" # for aerospace
-      "homebrew/homebrew-cask" # seems to be needed as https://github.com/zhaofengli/nix-homebrew is broken as hell
     ];
     casks = pkgs.callPackage ./casks.nix { };
 
