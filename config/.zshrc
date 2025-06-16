@@ -53,6 +53,18 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 # Nix
 export NIXPKGS_ALLOW_UNFREE=1
 
+function nrun() {
+    nix run nixpkgs#$1 "${@:2}"
+}
+
+function nsearch() {
+  nix search nixpkgs#$1
+}
+
+function nshell() {
+  nix shell nixpkgs#$1 "${@:2}"
+}
+
 # Helper functions
 function mkcd() {
   mkdir -p $@ && cd ${@:$#}
