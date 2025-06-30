@@ -6,6 +6,8 @@
 with pkgs;
 [
   # Docker management
+  docker
+  kubectl
   colima
   lazydocker
   # General tools
