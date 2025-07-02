@@ -7,6 +7,8 @@ with pkgs;
 [
   # Docker management
   docker
+  docker-credential-helpers
+  docker-buildx
   kubectl
   colima
   lazydocker
