@@ -22,3 +22,5 @@
 [core]
 	hooksPath = /dev/null
 	editor = "nvim"
+[rerere]
+	enabled = true
