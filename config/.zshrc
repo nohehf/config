@@ -31,6 +31,7 @@ source <(kubectl completion zsh)
 
 # Docker 
 source <(docker completion zsh)
+alias lzd=lazydocker
 
 # Atuin
 if command -v atuin &> /dev/null; then 
