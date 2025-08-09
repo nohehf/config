@@ -1,3 +1,3 @@
 [
-  (import ./cursor.nix)
-] 
+  # (import ./cursor.nix)
+]

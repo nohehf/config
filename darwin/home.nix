@@ -54,7 +54,7 @@ in
       {
         home = {
           enableNixpkgsReleaseCheck = false;
-          packages = pkgs.callPackage ./packages.nix { };
+          packages = import ../packages.nix { inherit pkgs; };
           file = import ./files.nix { inherit config pkgs; } // import ../files.nix { inherit config pkgs; };
           stateVersion = "23.11";
         };
