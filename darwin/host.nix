@@ -49,9 +49,9 @@ in
 
   system.checks.verifyNixPath = false;
 
-  # mac-os specifig packages
+  # mac-os specific packages
   environment.systemPackages = (
-    import ../packages.nix {
+    import ./packages.nix {
       inherit pkgs;
     }
   );
