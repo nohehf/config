@@ -34,7 +34,7 @@ in
     enable = true;
 
     # Store it in an other path to keep ~/.zshrc
-    dotDir = ".config/zsh-home-manager";
+    dotDir = "${config.xdg.configHome}/zsh-home-manager";
 
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
