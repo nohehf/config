@@ -62,7 +62,8 @@
   "svelte.plugin.svelte.rename.enable": false,
   "terminal.integrated.env.osx": {
     "CW_NEW_SESSION": "1",
-    "FIG_NEW_SESSION": "1"
+    "FIG_NEW_SESSION": "1",
+    "Q_NEW_SESSION": "1"
   },
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.fontWeight": "normal",
@@ -99,5 +100,6 @@
   "hexeditor.columnWidth": 16,
   "hexeditor.showDecodedText": true,
   "hexeditor.defaultEndianness": "little",
-  "hexeditor.inspectorType": "aside"
+  "hexeditor.inspectorType": "aside",
+  "github.copilot.nextEditSuggestions.enabled": true
 }

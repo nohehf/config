@@ -7,7 +7,8 @@
 after-login-command = []
 
 after-startup-command = [
-  'exec-and-forget borders active_color=0x636DA6FF inactive_color=0x00000000 width=6.0',
+  # Jankyborders, disabled for now
+  # 'exec-and-forget borders active_color=0x636DA6FF inactive_color=0x00000000 width=6.0',
 ]
 # Start AeroSpace at login
 start-at-login = true

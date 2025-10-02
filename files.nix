@@ -18,4 +18,5 @@ in
   "${HOME}/.config/nvim".source = mksym "${CONFIG}/nvim";
   # TODO: manage secrets properly
   "${HOME}/.secrets".source = mksym "${HOME}/config/secrets";
+  "${HOME}/.wezterm.lua".source = mksym "${CONFIG}/.wezterm.lua";
 }

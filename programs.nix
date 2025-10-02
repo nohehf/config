@@ -16,7 +16,6 @@ in
     enable = !headless; # only install on headfull hosts
     enableZshIntegration = true;
     enableBashIntegration = true;
-    extraConfig = builtins.readFile ./config/.wezterm.lua;
   };
 
   # Atuin managed by home-manager

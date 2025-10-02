@@ -33,6 +33,8 @@ source <(kubectl completion zsh)
 source <(docker completion zsh)
 alias lzd=lazydocker
 
+export DOCKER_HOST=unix:///Users/nohehf/.colima/default/docker.sock
+
 # Atuin
 if command -v atuin &> /dev/null; then 
   eval "$(atuin init zsh)"
@@ -111,3 +113,4 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+export PATH="$HOME/.local/bin:$PATH"
