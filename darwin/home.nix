@@ -38,6 +38,7 @@ in
 
     brews = [
       "coreutils"
+      "awscli" # awscli2. install via nixpkgs is kind of broken.
     ];
   };
 

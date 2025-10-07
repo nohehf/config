@@ -1,25 +1,5 @@
 _: [
-  # Development Tools
-  # "homebrew/cask/docker"
-  "visual-studio-code"
-
-  # Communication Tools
-  # "discord"
-  # "notion"
-  # "slack"
-  # "telegram"
-  # "zoom"
-
-  # Utility Tools
-  # "syncthing"
-
-  # Entertainment Tools
-  # "vlc"
-
-  # Productivity Tools
   "raycast"
-
-  # Browsers
   "google-chrome"
 
   # custom layout
@@ -28,8 +8,11 @@ _: [
   # remap keys, mostly for SUPER (shift + ctrl + option + command)
   "karabiner-elements"
 
+  # tiling window manager
   "aerospace"
-  "orbstack"
+
+  # Ice to replace bartender
+  "jordanbaird-ice"
 
   # TODO:
   #   https://github.com/exelban/stats

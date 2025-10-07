@@ -57,7 +57,8 @@ with pkgs;
   ## rust
   rustup
 
-  awscli2
+  # install via nixpkgs is kind of broken.
+  # awscli2
   k9s
 ]
 ++ (
