@@ -11,9 +11,9 @@ alias gunwip='git rev-list --max-count=1 --format="%s" HEAD | grep -q "\--wip--"
 alias gbclean="git branch -l | grep -v '\*' |  grep -x '.*/.*' | xargs git branch -d"
 
 # TODO: depreate the commands above later, and use the packaged version once it exists
-alias g='uv run --project /Users/nohehf/code/gitai gitai smart --model "openai/gpt-oss-20b:free"'
-alias gac='uv run --project /Users/nohehf/code/gitai gitai commit --model "openai/gpt-oss-20b:free"'
-alias gamr='uv run --project /Users/nohehf/code/gitai gitai mr --model "openai/gpt-oss-20b:free"'
+alias g='uv run --project /Users/nohehf/code/gitai gitai smart --model "alibaba/tongyi-deepresearch-30b-a3b:free"'
+alias gac='uv run --project /Users/nohehf/code/gitai gitai commit --model "alibaba/tongyi-deepresearch-30b-a3b:free"'
+alias gamr='uv run --project /Users/nohehf/code/gitai gitai mr --model "alibaba/tongyi-deepresearch-30b-a3b:free"'
 
 
 # Git clean the current branch, and switch to the default branch
