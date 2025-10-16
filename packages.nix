@@ -60,6 +60,10 @@ with pkgs;
   # install via nixpkgs is kind of broken.
   # awscli2
   k9s
+
+  bun
+  gleam
+  erlang
 ]
 ++ (
   if !headless then
