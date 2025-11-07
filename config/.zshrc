@@ -53,6 +53,9 @@ export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
+# Bun
+export PATH="$HOME/.bun/bin:$PATH"
+
 # Nix
 export NIXPKGS_ALLOW_UNFREE=1
 
