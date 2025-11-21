@@ -68,6 +68,11 @@ in
   system = {
     stateVersion = 4;
 
+    activationScripts.postActivation.text = ''
+      # Following line should allow us to avoid a logout/login cycle when changing settings
+      sudo -u ${user} /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+    '';
+
     # nice ressource: <https://macos-defaults.com/>
     defaults = {
       NSGlobalDomain = {
@@ -125,6 +130,8 @@ in
               disabled = [
                 60 # ctrl + space to cycle through keyboards
                 61 # ctrl + space to cycle through keyboards
+                64 # Spotlight search window (cmd + space / ctrl + space)
+                65 # Spotlight search window (cmd + space / ctrl + space, alternative)
               ];
             in
             # Generate a map for each key
