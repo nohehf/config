@@ -4,7 +4,7 @@
 # Inserts a blank line between shell prompts
 add_newline = false
 
-command_timeout = 2000
+command_timeout = 80
 
 # Missing features: zsh transient prompt, git wip indicator 
 # discussion on transient prompt: https://github.com/spaceship-prompt/spaceship-prompt/issues/775#issuecomment-977161851, https://github.com/romkatv/powerlevel10k/issues/888#issuecomment-657969840
