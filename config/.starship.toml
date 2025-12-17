@@ -72,3 +72,6 @@ format = "[$symbol$branch(:$remote_branch)]($style) "
 
 [nix_shell]
 heuristic = true
+format = "❄️[($pure_msg)($impure_msg)](white dimmed) "
+impure_msg = "i"
+pure_msg = "p"
