@@ -98,6 +98,8 @@ function v() {
   fi
 }
 
+eval "$(pay-respects zsh)"
+
 # just alias to j
 alias j=just
 

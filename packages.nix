@@ -64,6 +64,9 @@ with pkgs;
   bun
   gleam
   erlang
+
+  # f to pay respects
+  pay-respects
 ]
 ++ (
   if !headless then
