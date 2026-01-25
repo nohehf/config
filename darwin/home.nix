@@ -12,10 +12,11 @@ let
   HOME = "/Users/${user}";
   # Import SyncThing device configuration from gitignored secrets file
   # This file may not exist, so we handle it gracefully
-  syncthingDevices = let
-    secretsPath = ../secrets/syncthing-devices.nix;
-  in
-    if builtins.pathExists secretsPath then import secretsPath else { devices = {}; };
+  syncthingDevices =
+    let
+      secretsPath = ../secrets/syncthing-devices.nix;
+    in
+    if builtins.pathExists secretsPath then import secretsPath else { devices = { }; };
   # Extract device names from the secrets file for use in folder configurations
   deviceNames = builtins.attrNames syncthingDevices.devices;
 in

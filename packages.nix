@@ -55,7 +55,7 @@ with pkgs;
   volta
 
   ## rust
-  rustup
+  fenix.stable.toolchain
 
   # install via nixpkgs is kind of broken.
   # awscli2

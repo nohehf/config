@@ -11,6 +11,10 @@
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -19,6 +23,7 @@
       darwin,
       home-manager,
       nixpkgs,
+      fenix,
     }@inputs:
     let
       user = "nohehf";
@@ -41,7 +46,8 @@
       darwinConfigurations =
         let
           system = "aarch64-darwin";
-          pkgs = import nixpkgs { inherit system; overlays = import ./darwin/overlays; config = { allowUnfree = true; }; };
+          overlays = (import ./darwin/overlays) ++ [ fenix.overlays.default ];
+          pkgs = import nixpkgs { inherit system overlays; config = { allowUnfree = true; }; };
         in
         {
           ${system} = darwin.lib.darwinSystem {
@@ -64,7 +70,8 @@
       homeConfigurations =
         let
           system = "x86_64-linux";
-          pkgs = import nixpkgs { inherit system; config = { allowUnfree = true; }; };
+          overlays = [ fenix.overlays.default ];
+          pkgs = import nixpkgs { inherit system overlays; config = { allowUnfree = true; }; };
         in
         {
           "${system}" = home-manager.lib.homeManagerConfiguration {

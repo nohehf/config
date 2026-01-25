@@ -58,5 +58,6 @@ in
     home-manager.enable = true;
 
     # other distro specific programs here
-  } // shared-programs;
+  }
+  // shared-programs;
 }
