@@ -9,14 +9,22 @@
 }:
 
 let
-  HOME = builtins.getEnv "HOME";
+  HOME = "/Users/${user}";
+  # Import SyncThing device configuration from gitignored secrets file
+  # This file may not exist, so we handle it gracefully
+  syncthingDevices = let
+    secretsPath = ../secrets/syncthing-devices.nix;
+  in
+    if builtins.pathExists secretsPath then import secretsPath else { devices = {}; };
+  # Extract device names from the secrets file for use in folder configurations
+  deviceNames = builtins.attrNames syncthingDevices.devices;
 in
 {
   imports = [ ./dock ];
 
   users.users.${user} = {
     name = "${user}";
-    home = "/Users/${user}";
+    home = HOME;
     isHidden = false;
     shell = pkgs.zsh;
   };
@@ -72,6 +80,36 @@ in
         # Marked broken Oct 20, 2022 check later to remove this
         # https://github.com/nix-community/home-manager/issues/3344
         manual.manpages.enable = false;
+
+        services.syncthing = {
+          enable = true;
+          guiAddress = "127.0.0.1:8384";
+          # Override all settings set from the GUI. This is necessary to avoid changes made from the GUI apply.
+          overrideDevices = true;
+          overrideFolders = true;
+
+          settings = {
+            # Devices are imported from gitignored secrets file
+            devices = syncthingDevices.devices;
+
+            folders = {
+              "notes" = {
+                # The ID of a folder you'd like to sync
+                label = "notes"; # Optional device-specific folder name
+                path = "${HOME}/notes/";
+                # Share with all devices from secrets file
+                devices = deviceNames;
+              };
+              "sync" = {
+                # The ID of a folder you'd like to sync
+                label = "sync"; # Optional device-specific folder name
+                path = "${HOME}/sync/";
+                # Share with all devices from secrets file
+                devices = deviceNames;
+              };
+            };
+          };
+        };
       };
   };
 
