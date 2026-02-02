@@ -59,6 +59,11 @@ export PATH="$HOME/.bun/bin:$PATH"
 # Nix
 export NIXPKGS_ALLOW_UNFREE=1
 
+# Godot
+export GODOT4_BIN="/Applications/Godot.app/Contents/MacOS/Godot"
+export PATH=$PATH:$GODOT4_BIN
+alias godot="$GODOT4_BIN"
+
 function nrun() {
     nix run nixpkgs#$1 "${@:2}"
 }
