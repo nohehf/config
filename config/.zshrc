@@ -59,6 +59,9 @@ export PATH="$HOME/.bun/bin:$PATH"
 # Nix
 export NIXPKGS_ALLOW_UNFREE=1
 
+# node-rdkafka build (librdkafka needs ar for static lib on macOS)
+export AR=/usr/bin/ar
+
 # Godot
 export GODOT4_BIN="/Applications/Godot.app/Contents/MacOS/Godot"
 export PATH=$PATH:$GODOT4_BIN
@@ -103,6 +106,9 @@ function v() {
   fi
 }
 
+# thing
+SOURCE_DATE_EPOCH=$(date +%s)
+
 eval "$(pay-respects zsh)"
 
 # just alias to j
@@ -124,3 +130,6 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 export PATH="$HOME/.local/bin:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/nohehf/.antigravity/antigravity/bin:$PATH"
