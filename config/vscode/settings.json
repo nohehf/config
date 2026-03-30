@@ -1,40 +1,40 @@
 {
   "[c]": {
-    "editor.defaultFormatter": "ms-vscode.cpptools"
+    "editor.defaultFormatter": "ms-vscode.cpptools",
   },
   "[go]": {
-    "editor.defaultFormatter": "golang.go"
+    "editor.defaultFormatter": "golang.go",
   },
   "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "vscode.json-language-features",
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[ocaml]": {
-    "editor.defaultFormatter": "ocamllabs.ocaml-platform"
+    "editor.defaultFormatter": "ocamllabs.ocaml-platform",
   },
   "[nix]": {
-    "editor.defaultFormatter": "brettm12345.nixfmt-vscode"
+    "editor.defaultFormatter": "brettm12345.nixfmt-vscode",
   },
   "[python]": {
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.formatOnType": true,
     "editor.wordBasedSuggestions": "off",
-    "gitlens.codeLens.symbolScopes": ["!Module"]
+    "gitlens.codeLens.symbolScopes": ["!Module"],
   },
   "[rust]": {
-    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "editor.accessibilitySupport": "off",
   "editor.fontFamily": "JetBrainsMono Nerd Font",
   "editor.minimap.enabled": false,
   "editor.unicodeHighlight.allowedCharacters": {
-    "é": true
+    "é": true,
   },
   "editor.unicodeHighlight.nonBasicASCII": false,
   "explorer.confirmDelete": false,
@@ -43,7 +43,7 @@
     "*": true,
     "plaintext": false,
     "markdown": false,
-    "scminput": false
+    "scminput": false,
   },
   "java.completion.favoriteStaticMembers": [
     "org.junit.Assert.*",
@@ -54,16 +54,16 @@
     "org.junit.jupiter.api.DynamicTest.*",
     "org.mockito.Mockito.*",
     "org.mockito.ArgumentMatchers.*",
-    "org.mockito.Answers.*"
+    "org.mockito.Answers.*",
   ],
-  "python.defaultInterpreterPath": "~/.pyenv/shims/python",
+  "python.defaultInterpreterPath": "/run/current-system/sw/bin/python",
   "svelte.enable-ts-plugin": true,
   "svelte.plugin.svelte.defaultScriptLanguage": "ts",
   "svelte.plugin.svelte.rename.enable": false,
   "terminal.integrated.env.osx": {
     "CW_NEW_SESSION": "1",
     "FIG_NEW_SESSION": "1",
-    "Q_NEW_SESSION": "1"
+    "Q_NEW_SESSION": "1",
   },
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.fontWeight": "normal",
@@ -71,12 +71,12 @@
   "workbench.colorCustomizations": {
     "panel.border": "#363a48",
     "sideBar.border": "#363a48",
-    "tree.indentGuidesStroke": "#8d36e9"
+    "tree.indentGuidesStroke": "#8d36e9",
   },
   "workbench.colorTheme": "Tokyo Night",
   "workbench.editor.customLabels.patterns": {
     "**/routes/**/+layout.*": "${dirname(1)}/${dirname}.${extname}",
-    "**/routes/**/+page.*": "${dirname(1)}/${dirname}/+.${extname}"
+    "**/routes/**/+page.*": "${dirname(1)}/${dirname}/+.${extname}",
   },
   "workbench.iconTheme": "vscode-icons",
   "workbench.tree.indent": 15,
@@ -85,16 +85,16 @@
   "github.copilot.editor.enableAutoCompletions": true,
   "go.toolsManagement.autoUpdate": true,
   "[svelte]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[scss]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[markdown]": {
-    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
   },
   "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "editor.formatOnSave": true,
   "hexeditor.columnWidth": 16,
@@ -102,5 +102,5 @@
   "hexeditor.defaultEndianness": "little",
   "hexeditor.inspectorType": "aside",
   "github.copilot.nextEditSuggestions.enabled": true,
-  "godotTools.editorPath.godot4": "/Applications/Godot.app"
+  "godotTools.editorPath.godot4": "/Applications/Godot.app",
 }

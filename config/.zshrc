@@ -33,8 +33,6 @@ source <(kubectl completion zsh)
 source <(docker completion zsh)
 alias lzd=lazydocker
 
-export DOCKER_HOST=unix:///Users/nohehf/.colima/default/docker.sock
-
 # Atuin
 if command -v atuin &> /dev/null; then 
   eval "$(atuin init zsh)"
@@ -68,7 +66,7 @@ export PATH=$PATH:$GODOT4_BIN
 alias godot="$GODOT4_BIN"
 
 function nrun() {
-    nix run nixpkgs#$1 "${@:2}"
+    nix run nixpkgs#$1 --impure -- "${@:2}"
 }
 
 function nsearch() {
@@ -76,7 +74,7 @@ function nsearch() {
 }
 
 function nshell() {
-  nix shell nixpkgs#$1 "${@:2}"
+  nix shell nixpkgs#$1 --impure -- "${@:2}"
 }
 
 # Helper functions
