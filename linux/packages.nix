@@ -9,8 +9,12 @@ let
 in
 shared-packages
 ++ [
+  # Docker management
   docker
+  docker-credential-helpers
+  docker-buildx
   kubectl
+  colima
   unzip
 
   # gcc is used by nvim, to compile fzf native

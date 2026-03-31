@@ -15,4 +15,5 @@ shared-packages
   dockutil
   jankyborders
   code-cursor
+  orbstack
 ]

@@ -5,12 +5,7 @@
 
 with pkgs;
 [
-  # Docker management
-  docker
-  docker-credential-helpers
-  docker-buildx
-  kubectl
-  colima
+  # Container management
   lazydocker
   # General tools
   fastfetch
