@@ -21,6 +21,8 @@ with pkgs;
   tree
   ## github cli, convinent to create repos
   gh
+  ## gitlab cli
+  glab
   starship
   fzf
   zsh-syntax-highlighting
