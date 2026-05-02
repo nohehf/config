@@ -218,6 +218,12 @@ if.app-id = 'notion.id'
 check-further-callbacks = true
 run = ['move-node-to-workspace N']
 
+# Send linear to workspace N
+[[on-window-detected]]
+if.app-id = 'com.linear'
+check-further-callbacks = true
+run = ['move-node-to-workspace N']
+
 # Send discord to workspace M
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
