@@ -360,12 +360,13 @@ require('lazy').setup({
       -- Dynamically use git_files if in a git project, else find_files
       -- See: https://github.com/LunarVim/LunarVim/pull/2089/files
       local function find_project_files()
-        local ok = pcall(builtin.git_files)
+        -- Check if we're in a git repository
+        local is_git_repo = vim.fn.system('git rev-parse --is-inside-work-tree 2>/dev/null'):match('true')
 
-        if ok then
-          builtin.find_files()
-        else
+        if is_git_repo then
           builtin.git_files()
+        else
+          builtin.find_files()
         end
       end
 
@@ -904,6 +905,16 @@ require('lazy').setup({
       auto_install = true,
       highlight = {
         enable = true,
+        -- Disable treesitter for specific filetypes to avoid API compatibility issues
+        disable = function(lang, buf)
+          -- Disable for large files or when errors occur
+          local max_filesize = 100 * 1024 -- 100 KB
+          local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+          if ok and stats and stats.size > max_filesize then
+            return true
+          end
+          return false
+        end,
         -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
         --  If you are experiencing weird indenting issues, add the language to
         --  the list of additional_vim_regex_highlighting and disabled languages for indent.
