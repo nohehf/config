@@ -11,7 +11,7 @@ alias gunwip='git rev-list --max-count=1 --format="%s" HEAD | grep -q "\--wip--"
 alias gbclean="git branch -l | grep -v '\*' |  grep -x '.*/.*' | xargs git branch -d"
 
 # TODO: depreate the commands above later, and use the packaged version once it exists
-model='x-ai/grok-4.1-fast:free'
+model='openrouter/free'
 alias g='uv run --project /Users/nohehf/code/gitai gitai smart --model "$model"'
 alias gac='uv run --project /Users/nohehf/code/gitai gitai commit --model "$model"'
 alias gamr='uv run --project /Users/nohehf/code/gitai gitai mr --model "$model"'

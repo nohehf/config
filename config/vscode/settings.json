@@ -63,7 +63,7 @@
   "terminal.integrated.env.osx": {
     "CW_NEW_SESSION": "1",
     "FIG_NEW_SESSION": "1",
-    "Q_NEW_SESSION": "1",
+    "Q_NEW_SESSION": "1"
   },
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.fontWeight": "normal",
@@ -97,7 +97,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "editor.formatOnSave": true,
-  "hexeditor.columnWidth": 16,
+  "hexeditor.columnWidth": 31,
   "hexeditor.showDecodedText": true,
   "hexeditor.defaultEndianness": "little",
   "hexeditor.inspectorType": "aside",
