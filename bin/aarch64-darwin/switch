@@ -11,10 +11,11 @@ FLAKE_SYSTEM="darwinConfigurations.${SYSTEM_TYPE}.system"
 export NIXPKGS_ALLOW_UNFREE=1
 
 echo "${YELLOW}Starting build...${NC}"
-nix --extra-experimental-features 'nix-command flakes' build .#$FLAKE_SYSTEM $@
+# --impure allows nix to read gitignored local secrets (e.g. secrets/syncthing-devices.nix)
+nix --extra-experimental-features 'nix-command flakes' build --impure .#$FLAKE_SYSTEM $@
 
 echo "${YELLOW}Switching to new generation...${NC}"
-sudo ./result/sw/bin/darwin-rebuild switch --flake .#${SYSTEM_TYPE} $@
+sudo ./result/sw/bin/darwin-rebuild switch --impure --flake .#${SYSTEM_TYPE} $@
 
 echo "${YELLOW}Cleaning up...${NC}"
 unlink ./result

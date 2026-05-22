@@ -1,6 +1,7 @@
 # SyncThing device configuration template
-# Copy this file to syncthing-devices.nix and fill in your actual device IDs
-# This file is tracked in git, while syncthing-devices.nix is gitignored
+# Copy this file to syncthing-devices.nix and fill in your actual device IDs.
+# syncthing-devices.nix is gitignored; the rebuild scripts pass --impure so
+# nix can read it from the local filesystem without committing device IDs.
 {
   devices = {
     "device-name-1" = {

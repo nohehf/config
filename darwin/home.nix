@@ -10,11 +10,13 @@
 
 let
   HOME = "/Users/${user}";
-  # Import SyncThing device configuration from gitignored secrets file
-  # This file may not exist, so we handle it gracefully
+  # Import SyncThing device configuration from gitignored secrets file.
+  # Uses an absolute string path (not a nix path literal) so that --impure
+  # evaluation can reach the real filesystem even though the file is gitignored.
+  # Without --impure, nix path literals only see git-tracked files in the store.
   syncthingDevices =
     let
-      secretsPath = ../secrets/syncthing-devices.nix;
+      secretsPath = "${HOME}/config/secrets/syncthing-devices.nix";
     in
     if builtins.pathExists secretsPath then import secretsPath else { devices = { }; };
   # Extract device names from the secrets file for use in folder configurations
