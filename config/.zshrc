@@ -9,6 +9,9 @@ source $HOME/lib.sh
 
 export EDITOR="nvim"
 
+# Add ~/bin to PATH
+export PATH="$HOME/bin:$PATH"
+
 # Load .env file in secrets
 if [[ -f $HOME/.secrets/.env ]]; then
   exsource $HOME/.secrets/.env
