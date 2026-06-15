@@ -4,7 +4,7 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Caps Lock as HYPER (Command + Control + Option) when held, Escape when pressed alone",
+                        "description": "Caps Lock as HYPER (Command + Control + Option)",
                         "manipulators": [
                             {
                                 "from": {
@@ -21,7 +21,6 @@
                                         "modifiers": ["left_command", "left_control"]
                                     }
                                 ],
-                                "to_if_alone": [{ "key_code": "escape" }],
                                 "type": "basic"
                             }
                         ]
